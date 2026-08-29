@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warwickshire Hawks U17 — Defensive Glossary</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A1F8C;
+    --navy-dark: #0F1260;
+    --navy-mid: #252AA0;
+    --gold: #D4A017;
+    --gold-light: #F0BB30;
+    --gold-pale: #FBF0CC;
+    --white: #ffffff;
+    --off-white: #F5F5F8;
+    --text: #1a1a2e;
+    --text-light: #5a5a7a;
+    --border: #dde0f0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--off-white);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── HERO ─────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.02) 40px,
+      rgba(255,255,255,0.02) 80px
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 32px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-logo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    object-fit: cover;
+    object-position: center center;
+    box-shadow: 0 0 40px rgba(212,160,23,0.35);
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  .hero-bar {
+    background: var(--gold);
+    height: 6px;
+  }
+
+  /* ─── CONTAINER ─────────────────────────────────── */
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .section { padding: 64px 0; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+
+  /* ─── SEARCH ─────────────────────────────────────── */
+  .search-wrap {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+  }
+
+  #termSearch {
+    width: 100%;
+    padding: 16px 24px 16px 52px;
+    border-radius: 999px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(26,31,140,0.04);
+  }
+
+  #termSearch::placeholder { color: var(--text-light); }
+
+  #termSearch:focus {
+    border-color: var(--gold);
+    box-shadow: 0 4px 16px rgba(212,160,23,0.15);
+  }
+
+  /* ─── FILTER PILLS ───────────────────────────────── */
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-right: 4px;
+  }
+
+  .pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .pill:hover { border-color: var(--navy); color: var(--navy); }
+
+  .pill.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
+
+  /* ─── RESULTS COUNT ──────────────────────────────── */
+  .results-count {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+
+  .results-count span { color: var(--navy); }
+
+  /* ─── GLOSSARY GRID ──────────────────────────────── */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  /* ─── TERM CARD ──────────────────────────────────── */
+  .term-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+    border-left: 6px solid var(--navy);
+    position: relative;
+  }
+
+  .term-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(26,31,140,0.1);
+    border-color: var(--navy);
+  }
+
+  .term-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .term-card h3 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    color: var(--navy);
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+  }
+
+  .term-chevron {
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 3px;
+    transition: transform 0.3s;
+  }
+
+  .category-tag {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background: var(--gold-pale);
+    color: var(--navy);
+    margin-top: 6px;
+  }
+
+  .term-def {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--off-white);
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: none;
+    animation: fadeUp 0.25s ease;
+  }
+
+  /* Active state */
+  .term-card.active {
+    background: var(--navy-dark);
+    border-color: var(--navy-dark);
+    border-left-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(15,18,96,0.25);
+  }
+
+  .term-card.active h3 { color: var(--gold); }
+
+  .term-card.active .category-tag {
+    background: rgba(212,160,23,0.2);
+    color: var(--gold-light);
+  }
+
+  .term-card.active .term-def {
+    display: block;
+    color: rgba(255,255,255,0.82);
+    border-top-color: rgba(255,255,255,0.1);
+  }
+
+  .term-card.active .term-chevron { transform: rotate(90deg); }
+
+  /* No results */
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-light);
+  }
+
+  .no-results h3 {
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── FOOTER ─────────────────────────────────────── */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.88rem;
+    margin-top: 20px;
+  }
+
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-logo { margin: 0 auto; }
+    .glossary-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ──────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Warwickshire Hawks</div>
+      <h1>Defensive<br><span>Glossary</span></h1>
+      <p class="hero-sub">The language of the system. Know every term, own every call. Tap a card to reveal the coaching cue.</p>
+    </div>
+    <img class="hero-logo" src="data:image/jpeg;base64,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" alt="Hawks Logo">
+  </div>
+</div>
+
+<div class="hero-bar"></div>
+
+<!-- ─── MAIN ───────────────────────────────────────── -->
+<section class="section container">
+  <div class="section-label">U17 · 2026/27 Season</div>
+  <h2 class="section-title">Defensive Glossary</h2>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="termSearch" placeholder="Search terms — e.g. 'Ice', 'Screen', 'Gap'…" autocomplete="off">
+  </div>
+
+  <!-- Filter pills -->
+  <div class="filter-row">
+    <span class="filter-label">Filter:</span>
+    <button class="pill active" data-cat="all">All Terms</button>
+    <button class="pill" data-cat="stance">Stance & Body</button>
+    <button class="pill" data-cat="court">Court Zones</button>
+    <button class="pill" data-cat="screen">Ball Screens</button>
+    <button class="pill" data-cat="rotation">Rotations</button>
+  </div>
+
+  <!-- Count -->
+  <div class="results-count" id="resultsCount"></div>
+
+  <!-- Grid -->
+  <div class="glossary-grid" id="glossaryGrid"></div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <p>© 2026 <strong>Warwickshire Hawks Basketball</strong>. Developing the whole person through the game.</p>
+</footer>
+
+<script>
+  const glossary = [
+    { term: "No Middle",       cat: "court",    def: "Don't allow ball handlers to drive through the middle. If they beat you, force to the other side of the paint — never concede the lane." },
+    { term: "Close Out",       cat: "stance",   def: "Sprint and stutter to the ball to contest a 3pt shot. Soft contest. Force teams to prove they can make 3s. Don't leave your feet unless instructed." },
+    { term: "Boxer Stance",    cat: "stance",   def: "High foot positioning used to funnel the offensive player towards help. Active, aggressive base." },
+    { term: "Airplane Stance", cat: "stance",   def: "Arms wide when off-ball to deflect passes and close off sightlines. Take up maximum space without fouling." },
+    { term: "Hands",           cat: "stance",   def: "Coach shout: every player raises hands with open palms to deflect passes. Reminder: 'get hands out of the cookie jar.'" },
+    { term: "Cylinder",        cat: "stance",   def: "Stay directly vertical with body and arms to avoid fouls during layup contests. Do not lean." },
+    { term: "Chest Out",       cat: "stance",   def: "Close out with chest high to create contact. Less likely to be called for a foul than using only high hands." },
+    { term: "Gap",             cat: "rotation", def: "Defender stays in the middle between the ball and their man (typically 1 pass away) — ready to help or recover." },
+    { term: "Wolf",            cat: "screen",   def: "Trap, typically off an iced or weaked ball screen. Cover tightly with an arm up to deter skip passes." },
+    { term: "Help",            cat: "rotation", def: "Usually the low man or 'goalie' in the Home position, guarding the weak-side furthest offensive player." },
+    { term: "Top Lock",        cat: "stance",   def: "Facing a great shooter: angle body to the high side to prevent catches above the 3pt line. Force baseline only." },
+    { term: "Home",            cat: "court",    def: "Head under the basket on a fast break. The anchor position — the 'get home' destination for the deepest defender." },
+    { term: "Middle Third",    cat: "court",    def: "Paint lines extended outward — the dead zone. We must never allow a drive or pass to cut through here." },
+    { term: "Side Thirds",     cat: "court",    def: "Target areas on either side of the middle third where we funnel ball handlers to force turnovers and difficult shots." },
+    { term: "Ice",             cat: "screen",   def: "On a ball screen: force the ball handler to the sideline and baseline — take away the middle entirely. Big calls it, Guard complies." },
+    { term: "Clipped",         cat: "screen",   def: "Danger zone: when the ball defender gets hit by a screen, allowing the handler to turn the corner. Must be communicated immediately." },
+    { term: "Reject",          cat: "screen",   def: "When the ball handler avoids the screen to attack middle. Must not be allowed — this beats our coverage." },
+    { term: "Weak",            cat: "screen",   def: "On a ball screen: force the ball handler to their left hand. Big calls it, Guard complies. Works alongside Ice." },
+    { term: "Drop",            cat: "screen",   def: "Big defender coverage: shadow the ball while staying within arm's reach of the screener. Sag to protect the rim." },
+    { term: "Under",           cat: "screen",   def: "Ball handler defender goes underneath the screen — used when not concerned about the shot and want to protect against drives." },
+    { term: "Over",            cat: "screen",   def: "Ball handler defender fights over the top of the screen to take away the shot and force into the help defender." },
+    { term: "Cover 2",         cat: "rotation", def: "A single defender covering two offensive players — one in the corner, one cutting. Requires elite timing and awareness." },
+    { term: "Crackback",       cat: "rotation", def: "The Cover 2 defender sprinting to rotate back to a back cutter from the corner. Don't allow the free cut." },
+    { term: "Full Rotation",   cat: "rotation", def: "Cover 2 closes out to a shooter — all other defenders must rotate together to cover the open man. No one stands still." },
+    { term: "Stunt & Recover", cat: "rotation", def: "In the gap: stunt toward the ball or shooter to cause hesitation, buying time for a teammate to close out or rotate back." },
+    { term: "Strong Side",     cat: "court",    def: "The side of the floor where the ball is currently located. Everyone must be aware of the ball side at all times." },
+    { term: "Weak Side",       cat: "court",    def: "The side of the floor away from the ball. Our help defenders live here — ready to rotate." },
+    { term: "Front Court",     cat: "court",    def: "The offensive half of the court — where we score. On defence, this is the opponent's attacking half." },
+    { term: "Back Court",      cat: "court",    def: "The defensive half of the court — where we protect. Getting 'home' means getting back here first." },
+  ];
+
+  const catLabels = {
+    all:      "Defense",
+    stance:   "Stance & Body",
+    court:    "Court Zones",
+    screen:   "Ball Screens",
+    rotation: "Rotations",
+  };
+
+  const grid       = document.getElementById('glossaryGrid');
+  const searchEl   = document.getElementById('termSearch');
+  const countEl    = document.getElementById('resultsCount');
+  const pills      = document.querySelectorAll('.pill');
+
+  let activeCategory = 'all';
+
+  function render() {
+    const q = searchEl.value.toLowerCase().trim();
+    const filtered = glossary.filter(item => {
+      const matchSearch = item.term.toLowerCase().includes(q) || item.def.toLowerCase().includes(q);
+      const matchCat    = activeCategory === 'all' || item.cat === activeCategory;
+      return matchSearch && matchCat;
+    });
+
+    countEl.innerHTML = `Showing <span>${filtered.length}</span> of <span>${glossary.length}</span> terms`;
+    grid.innerHTML = '';
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div class="no-results">
+          <h3>No Terms Found</h3>
+          <p>Try a different search or filter.</p>
+        </div>`;
+      return;
+    }
+
+    filtered.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'term-card';
+      card.innerHTML = `
+        <div class="term-card-header">
+          <div>
+            <h3>${item.term}</h3>
+            <span class="category-tag">${catLabels[item.cat]}</span>
+          </div>
+          <span class="term-chevron">▶</span>
+        </div>
+        <p class="term-def">${item.def}</p>
+      `;
+      card.querySelector('.term-card-header').addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeCategory = pill.dataset.cat;
+      render();
+    });
+  });
+
+  searchEl.addEventListener('input', render);
+
+  render();
+</script>
+
+</body>
+</html>
