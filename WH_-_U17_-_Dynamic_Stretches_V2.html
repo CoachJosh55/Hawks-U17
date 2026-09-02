@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hawks U17 — Dynamic Movement Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1A1F8C;
+  --navy-dark: #0F1260;
+  --gold: #D4A017;
+  --gold-light: #F0BB30;
+  --gold-pale: #FBF0CC;
+  --white: #ffffff;
+  --off-white: #F5F5F8;
+  --text: #1a1a2e;
+  --text-light: #5a5a7a;
+  --border: #dde0f0;
+
+  --bg-color: var(--off-white);
+  --surface: var(--white);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius-md: 14px;
+  --shadow-md: 0 4px 16px rgba(26,31,140,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg-color);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, .brand-font {
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(26,31,140,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--gold);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.nav-logo span { color: var(--gold); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 120px 5% 60px;
+  text-align: center;
+  position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 80px);
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { font-weight: 900; font-size: clamp(2.5rem, 6vw, 4.5rem); text-transform: uppercase; line-height: 1; }
+.hero h1 span.accent { color: var(--gold); font-style: italic; }
+.hero-sub { margin-top: 15px; font-size: 1.1rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ── CONTENT ── */
+.section-wrapper { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--gold);
+  letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--gold); }
+.section-title { font-weight: 900; font-size: 2.2rem; color: var(--navy); text-transform: uppercase; margin-bottom: 30px; }
+
+/* ── EXERCISE GRID ── */
+.google-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 50px;
+}
+.ex-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  transition: var(--transition);
+}
+.ex-card:hover { border-color: var(--gold); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.ex-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--gold); font-size: 0.9rem; margin-bottom: 5px; }
+.ex-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--navy); text-transform: uppercase; line-height: 1.2; margin-bottom: 8px; }
+.ex-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+.ex-tag { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; background: var(--gold-pale); color: #8a6000; border-radius: 999px; text-transform: uppercase; }
+.ex-desc { font-size: 0.95rem; color: var(--text); margin-bottom: 12px; }
+.ex-why { font-size: 0.85rem; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 12px; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 60px 20px; background: var(--navy-dark); border-top: 4px solid var(--gold); color: rgba(255,255,255,0.5);
+}
+.footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.8rem; color: var(--white); text-transform: uppercase; }
+.footer-logo span { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav><div class="nav-logo"><span>Warwickshire</span> Hawks</div></nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Movement <span class="accent">Prep</span></h1>
+    <p class="hero-sub">U17 Dynamic Stretching Protocol</p>
+  </div>
+</section>
+
+<div class="section-wrapper">
+
+  <div class="section-label">Phase 01</div>
+  <h2 class="section-title">Neck Mobility</h2>
+  <div class="google-grid">
+    <div class="ex-card">
+      <div class="ex-num">Exercise 01</div>
+      <div class="ex-name">Neck Roll (Half-Circle)</div>
+      <div class="ex-tags"><span class="ex-tag">Neck Flexors</span><span class="ex-tag">Traps</span></div>
+      <p class="ex-desc">Walk normally, drop chin to chest then slowly roll ear to shoulder on each side. No full circles.</p>
+      <p class="ex-why">Loosens the cervical spine and prepares for scanning the court.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Phase 02</div>
+  <h2 class="section-title">Upper Body & Thoracic</h2>
+  <div class="google-grid">
+    <div class="ex-card">
+      <div class="ex-num">Exercise 02</div>
+      <div class="ex-name">Arm Circle + Cross Swing</div>
+      <div class="ex-tags"><span class="ex-tag">Deltoids</span><span class="ex-tag">Rotator Cuff</span></div>
+      <p class="ex-desc">Walk forward swinging both arms in large, controlled circles, then swing arms across the chest like a hug.</p>
+      <p class="ex-why">Warms the glenohumeral joint for shooting and passing actions.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 03</div>
+      <div class="ex-name">Overhead Reach + Lean</div>
+      <div class="ex-tags"><span class="ex-tag">Lats</span><span class="ex-tag">Obliques</span></div>
+      <p class="ex-desc">Interlace fingers, press palms to ceiling and lean gently to one side with each step.</p>
+      <p class="ex-why">Elongates the lats and improves reach for rebounds.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 04</div>
+      <div class="ex-name">Walking Thoracic Rotation</div>
+      <div class="ex-tags"><span class="ex-tag">T-Spine</span><span class="ex-tag">Pecs</span></div>
+      <p class="ex-desc">Hands behind head, elbows wide. With each step, rotate your upper chest fully toward the lead leg.</p>
+      <p class="ex-why">Crucial for rotational power and maintaining vision while moving.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Phase 03</div>
+  <h2 class="section-title">Core & Hip Stability</h2>
+  <div class="google-grid">
+    <div class="ex-card">
+      <div class="ex-num">Exercise 05</div>
+      <div class="ex-name">Walking Lunge + Rotation</div>
+      <div class="ex-tags"><span class="ex-tag">Hip Flexors</span><span class="ex-tag">Glutes</span></div>
+      <p class="ex-desc">Step into a lunge, lower the back knee, then rotate both arms and chest over the front knee.</p>
+      <p class="ex-why">Prepares the hips for low defensive stances and explosive drives.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 06</div>
+      <div class="ex-name">High Knees Pull</div>
+      <div class="ex-tags"><span class="ex-tag">Glutes</span><span class="ex-tag">Core</span></div>
+      <p class="ex-desc">Pull one knee into the chest with both hands while rising onto the opposite tiptoe.</p>
+      <p class="ex-why">Opens the hip flexor while loading the glute for vertical power.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 07</div>
+      <div class="ex-name">Lateral Lunge Walk</div>
+      <div class="ex-tags"><span class="ex-tag">Adductors</span><span class="ex-tag">Groin</span></div>
+      <p class="ex-desc">Step wide to the side, sit into the hip while keeping the trailing leg straight. Alternate sides.</p>
+      <p class="ex-why">Essential for lateral defensive sliding and "No Middle" containment.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 08</div>
+      <div class="ex-name">Cossack Walk</div>
+      <div class="ex-tags"><span class="ex-tag">Deep Hip Mobility</span></div>
+      <p class="ex-desc">Similar to lateral lunge but lower. Shift weight from side to side while staying as low as possible.</p>
+      <p class="ex-why">Extreme range of motion prep for awkward landing recovery.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Phase 04</div>
+  <h2 class="section-title">Posterior Chain & Ankles</h2>
+  <div class="google-grid">
+    <div class="ex-card">
+      <div class="ex-num">Exercise 09</div>
+      <div class="ex-name">Leg Kick Superman</div>
+      <div class="ex-tags"><span class="ex-tag">Hamstrings</span><span class="ex-tag">Glutes</span><span class="ex-tag">Lower Back</span></div>
+      <p class="ex-desc">Walk forward and kick one straight leg up toward the outstretched opposite hand, then immediately swing that same leg back behind you, hinging forward into a "flying superman" balance with arms reaching forward for 1-2 seconds.</p>
+      <p class="ex-why">Combines an active hamstring kick with a posterior-chain swing-through to challenge single-leg balance and control.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 10</div>
+      <div class="ex-name">Inchworm Walk-out</div>
+      <div class="ex-tags"><span class="ex-tag">Hamstrings</span><span class="ex-tag">Shoulders</span></div>
+      <p class="ex-desc">Hinge and walk hands out to a plank position, hold 1 second, then walk feet back to hands.</p>
+      <p class="ex-why">Comprehensive posterior chain activation and core bracing.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 11</div>
+      <div class="ex-name">Heel-to-Glute Pull</div>
+      <div class="ex-tags"><span class="ex-tag">Quads</span><span class="ex-tag">Knee Extensors</span></div>
+      <p class="ex-desc">Pull one heel toward your glute while rising onto the opposite tiptoe. Hold 1 second.</p>
+      <p class="ex-why">Actively stretches the rectus femoris to prevent quad strains.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 12</div>
+      <div class="ex-name">Knee-Over-Toe Lunge</div>
+      <div class="ex-tags"><span class="ex-tag">VMO</span><span class="ex-tag">Patella Tendon</span></div>
+      <p class="ex-desc">Step into a lunge and consciously push the front knee forward past the toes while keeping heel down.</p>
+      <p class="ex-why">Builds knee resilience and reduces injury risk during deceleration.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 13</div>
+      <div class="ex-name">Walking Calf Raise</div>
+      <div class="ex-tags"><span class="ex-tag">Achilles</span><span class="ex-tag">Calves</span></div>
+      <p class="ex-desc">Walk forward only on tiptoes, driving up as high as possible on each step.</p>
+      <p class="ex-why">Warms the Achilles and prepares for explosive jumping.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-num">Exercise 14</div>
+      <div class="ex-name">Ankle Roll Walk</div>
+      <div class="ex-tags"><span class="ex-tag">Tibialis Anterior</span><span class="ex-tag">Ankle Stability</span></div>
+      <p class="ex-desc">Walk on your heels with toes lifted as high as possible for the full court width.</p>
+      <p class="ex-why">Trains the tibialis anterior to absorb impact during landing.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo"><span>Warwickshire</span> Hawks</div>
+  <p>U17 Coaching System · "Hawks Fly Together"</p>
+</footer>
+
+</body>
+</html>
