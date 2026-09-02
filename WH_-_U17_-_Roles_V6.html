@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warwickshire Hawks U17 — System Roles</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A1F8C;
+    --navy-dark: #0F1260;
+    --navy-mid: #252AA0;
+    --gold: #D4A017;
+    --gold-light: #F0BB30;
+    --gold-pale: #FBF0CC;
+    --white: #ffffff;
+    --off-white: #F5F5F8;
+    --text: #1a1a2e;
+    --text-light: #5a5a7a;
+    --border: #dde0f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--off-white);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── HERO ─────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.02) 40px,
+      rgba(255,255,255,0.02) 80px
+    );
+  }
+
+  .hero-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 32px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-logo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    object-fit: cover;
+    object-position: center center;
+    box-shadow: 0 0 40px rgba(212,160,23,0.35);
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ─── GOLD BAR ───────────────────────────────────── */
+  .hero-bar {
+    background: var(--gold);
+    height: 6px;
+  }
+
+  /* ─── CONTAINER ─────────────────────────────────── */
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .section { padding: 64px 0; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 40px;
+  }
+
+  /* ─── ROLE CARDS ─────────────────────────────────── */
+  .roles-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .role-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(26,31,140,0.06);
+    transition: box-shadow 0.2s;
+  }
+
+  .role-card:hover {
+    box-shadow: 0 8px 28px rgba(26,31,140,0.12);
+  }
+
+  .card-header {
+    padding: 28px 32px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 8px solid var(--navy);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .card-header.gold-accent {
+    border-left-color: var(--gold);
+  }
+
+  .card-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .card-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .role-tag {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: var(--gold-pale);
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .chevron {
+    font-size: 1.2rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .role-card.active .chevron {
+    transform: rotate(90deg);
+  }
+
+  /* ─── CARD CONTENT ───────────────────────────────── */
+  .card-content {
+    display: none;
+    padding: 0 32px 32px 40px;
+  }
+
+  .role-card.active .card-content {
+    display: block;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 24px;
+  }
+
+  .content-block {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+
+  .content-block-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .content-block-label.offense { color: var(--gold); }
+  .content-block-label.defense { color: var(--navy); }
+
+  .content-block-label::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .content-block-label.offense::before { background: var(--gold); }
+  .content-block-label.defense::before { background: var(--navy); }
+
+  .concept-list { list-style: none; }
+
+  .concept-list li {
+    margin-bottom: 12px;
+    padding-left: 22px;
+    position: relative;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .concept-list li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 5px;
+  }
+
+  .concept-list li strong {
+    color: var(--navy);
+    display: block;
+    font-size: 0.88rem;
+    margin-bottom: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── IMPACT BOX ─────────────────────────────────── */
+  .impact-box {
+    background: var(--navy-dark);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .impact-box .impact-label {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+  }
+
+  .impact-box .impact-value {
+    color: var(--gold-light);
+    font-size: 1.15rem;
+  }
+
+  .impact-box .impact-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+
+  /* ─── BADGER single-column ───────────────────────── */
+  .content-single {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+  }
+
+  /* ─── FOOTER ─────────────────────────────────────── */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.88rem;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-logo { margin: 0 auto; }
+    .content-grid { grid-template-columns: 1fr; }
+    .card-header { padding: 20px 20px; }
+    .card-content { padding: 0 20px 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ──────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Warwickshire Hawks</div>
+      <h1>System<br><span>Archetypes</span></h1>
+      <p class="hero-sub">Every player has a role that unlocks the system. Know yours, own it, and execute it with relentless precision. Five roles. One team.</p>
+    </div>
+    <img class="hero-logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIbGNtcwIQAABtbnRyUkdCIFhZWiAH4gADABQACQAOAB1hY3NwTVNGVAAAAABzYXdzY3RybAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWhhbmS0qt0fE8gDPPVRFEUoepjiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAABxjcHJ0AAABDAAAAAx3dHB0AAABGAAAABRyWFlaAAABLAAAABRnWFlaAAABQAAAABRiWFlaAAABVAAAABRyVFJDAAABaAAAAGBnVFJDAAABaAAAAGBiVFJDAAABaAAAAGBkZXNjAAAAAAAAAAR1UDMAAAAAAAAAAAAAAAAAdGV4dAAAAABDQzAAWFlaIAAAAAAAAPNRAAEAAAABFsxYWVogAAAAAAAAg98AAD2/////u1hZWiAAAAAAAABKvwAAsTcAAAq5WFlaIAAAAAAAACg4AAARCgAAyLljdXJ2AAAAAAAAACoAAAB8APgBnAJ1A4MEyQZOCBIKGAxiDvQRzxT2GGocLiBDJKwpai5+M+s5sz/WRldNNlR2XBdkHWyGdVZ+jYgskjacq6eMstu+mcrH12Xkd/H5////7QCEUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAGgcAigAYkZCTUQwYTAwMGE0YjAzMDAwMGQ2MmUwMDAwMDg1YTAwMDAwZjYxMDAwMGEwNzcwMDAwYmNhMDAwMDA1MGQyMDAwMGI1ZTEwMDAwOTdlYTAwMDA2MGZhMDAwMDAyNDkwMTAwAP/bAEMABwcHBwcHDAcHDBEMDAwRFxEREREXHhcXFxcXHiQeHh4eHh4kJCQkJCQkJCsrKysrKzIyMjIyODg4ODg4ODg4OP/bAEMBCQkJDg0OGQ0NGTsoISg7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//CABEIBIAEfwMBIgACEQEDEQH/xAAcAAEAAgIDAQAAAAAAAAAAAAAABgcEBQECAwj/xAAaAQEAAgMBAAAAAAAAAAAAAAAAAQIDBAUG/9oADAMBAAIQAxAAAAGyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHmerXYdo3qM49kuQzzsm6Dck4Qn0JkieRVJGlzKs517VkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA66eW6QOP54tzX0thZ627p66ZomGs0TMzMTheAsAAAAACHbO16Eh2kKY5svcU4xTfuT89bPBN5KrkGCZo1uxwzyIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHnGLRK/CrIxtxakWh7armYZsQEgAAAAAAAAAAAAAAAG01aqdymm2tP0H3oWV6trPaDfatuRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcHKNQTPFlwmC8b1cvENqoSAAAAHrDybva45h6wa/OBlg3dxas0H6X9zgt8/dLrp/ZriDYglVn6k0MurTxNWt9v80QJLtJLWDLAAAAADa6pVZUxoT21LfQCrp3o22wxSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAODniNV1sRYFf6R0KBsQAAAMmGMlUVq9pNO9/oXh1Y31TVo0cyhuftxe6Az7j36URJYd0Ku/TtuVvfvkw7h5PHtV7pV+hIxkc8+1Mjt495a9GXLz7SCKb+hsM2FYkEnVJV73hGeMA9ujTx3U+luhahMX6D0xSqTxjdqFwAADngSuwKU51Z+hVS2Lz77UYZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMevMkTOto706VA2oAAHrDyTyV6tqd6XfR14t+RxmU8u/FGXnSezGbZtG29eNrRl9ULIN+u2u/5+v/m3r+vLXqjYq54bMfQkTk0e4mSoh3Me0661QFy86N+gefbTwW1eNW3MU2tLZY8uDq0SqK2brzOInLaK0LTyXUJYeaJlR/0DRqdWOjTunk307USn0LzxijLAADv0QnFh0Jlalr8Qmac63YUkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYxkReJw7ern4B0aBIAeh5pbosU6/v0ZIvzKoi4uRkwKgvmkNmudddG3jinmP5mz1Z+e7Wj+436zP59+hKAq8h0arzoy39K2bSd/0BUG9W+tRs9fxMlMjuY9znS2R829EDpUzL5pW6uZfR7CB8UTOkfoWpciJjpUWHX/phm/4Pvtzyb09t7K0eePGnXG9UM8S6168sPj3QjXRPKxc2UWPlj58W7A80R4bEAAN/oFV4bb5+sXm3njr207AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHWBXjf1Vg9OrQNiAAHaT2NqzA7B2Os599nxWMyI1Xn0BRu7XBkUdbVfoSJ+Mz4+Shr5qe2M0V7J49ELrjjEt51J5oa+qL2o1o6dFlw22dG2zpK7eNO3z5xttT2Md2bSkrj5V4p6zXik+eryqbvGtycbedSk4mXHPEyV3Br8pferb+v3LQv898WvVHZx2DNdPIeZeifbG8etjs6cVzY3IyVFFt9oerR6eczlY2PtNbxb0d1mES7WPa3ZXVjc26HRyM5GIOlQ3+mo8RcABI7UojL1LX2jMm5lgrIAAAAAAAAAAAAAAAAAAAAAAAAAADww6jzxs4qdbGFwAAFhT6g87RtedP23ptS1Mb7UWB0aT6v7Aqzn3ho7GPKu+hpfp2sfM788u8Jq+16o6uOyp58/3dq22VKWnUt2rHSptLTphrTaeqgKGbhGzD08x68eaHPBJzwMnP06qSavXomxc+q2FY1cmVLrX+e57qTOI9n73UtjevjWVkY6MvsY8S7a/tjnX8MKK1zV9C6+sbFxTneGyrSqDdTt42RjoX346WV8PJUUW+haf36xob1QAO1h10xT9CdqmtPk39hikAAAAAAAAAAAAAAAAAAAAAAAADjRYtT7dfbDOpQJAMvbWtqWqqO37RJ4DbqBZU7oW8+TfjI4qnFNsRDymZQHjd8V361079NytwSaipRzLyen8/A3KvfwZoCQAAAAAAAAAAAAD28UPbxBZdabnDN2cw6W8m9Px2w4V1aYN1w+ytS3hRNhVrmgN2rf6O6tadvG5BSWjbfw7h06CYkOWrV9Z8hmgBvdEqvnNo23+Tk2Y15AAAAAAAAAAAAAAAAAAAAAAHAifFU7leeh1KAAJVFcjGvvvGpJxcqIb7YzFA+F4VR06aYbULCr33xTf1V2Txyr0NaPWD71bv6RSu9Sc2PHVoFgAAAy6TiJDtdO8JWRsdPJVWVanfWtWWRYrDav/SeMcwXidomBeVhLRW2PaLJFSY1qxLo4osOxgAAAAAZ2ChkzyuvbFP0BxWE65V4TBbHrjp0O2dmiW2R46/jZIhX/AKefWoGWFnV7dOlbY6PbudajtffNT9OseG3UBnYKF4bahri5N9uNawAAAAAAAAAAAAAAAAAAAAHET9ak3K8dTqUAElo0+Ff9Ua1ouNyuRe9AWvo29YnaVb4JsTtx7atqxhH0LFN2tS7GWQPcrfWVCYjzrT2o+ro1DNAAB23mC2h9J9veVmr7eypy82BnctHIFZAACAA6y7cR2IdHFNonond1ueDo4gkAAAAAAA54Hr58ekLd2UbmvGyc03b1P5Y0A6tHfpZ2GdvIOYrybxHA0DrUvrjRyPkX+f3fp3cYADNwkLw21EXNyL7Ea9gAAAAAAAAAAAAAAAAAAGhzKX2a+PidagSHobe5KLs3n2ltazbM1LUEzsHtY0mjPar6DYXTh5dfV2u6dbHdG+h+z5t9nSPprejQNqAADZS/QyQqUS7vw9nEyzl5QiQgAAAAEnGkhPQxS+G696HVDfxgAAAHO5q0qxJRrWqKRWn21ZhmbJmCatiH0DhbMUMn8H3q+AywA32hVXLVOAwy9N5a1VfWh56/n32HpRVxWRfHsRDiIbWmskeI6tBIqI654uAbbUqr7y6auDj5PUYZAAAAAAAAAAAAAAAAAeHtUmWNZqDs4wsGwh6W/wBtjyMlOxu66x3K97k+e7QxsupPoWpIRUdGtlTus7M42TQVRdtSZ40fXo6NAkAesy1LxeZyDv5za69jm5gAgAAAAEjpEM9ZHCNJ5+k1A6uEAAAesPJMprrTV0vn/bTtrNly1rBAAABh5grSEfQWr3a0alMW6FAuA29t0bk6s35XO8r/AFbae+a5s80NdbqB54ycY3KhLf3LWll8m8GrT6FrrKr8dGgCZwxjfQvMFnXGyBSQAAAAAAAAAAAAAABH5aCuO3XtYwywMmGNtrJrfWm3Nl8+W7p2k/XmO61sWB3Kzxi8eeywqCx7OrHsU39i02o2GvNiAkParxkEgknA2sTMODsBEhAAAAAAdZdtToof2tfYa09FqhkgAAbGrXZ1hTHTtBJpmNGwY5AAAAAAAA4i0qWih8G+6z6VYgNyoDa6pV9B9qptDjZKijsyhvVoOc0cWJlzbm3ajrTmNaUq+frjlDYV9CVFniMDeqB3uOmdhrzezEy+PkAAAAAAAAAAAAAAHB4UlIId1KBuVA9bhrG4ufbLrqwfTTt89bKx666dLr08UsnnXo+xI7CN+v0J2pax9G0gpGeVdtV4G/UASfBbW2FlenlNwNHKEAAAAAABoMsbKvtf4eo0w6mEAAe8PDOm8707Q6Z+jn2CkgAAAAAAAAAAOORDax+gNPt1pFs9Z06BY2GvQZWLc2GausWUenPtx5xGvy6adtztE1Bc9FTrZrLKf8cTNAbMAASy2fnq1OfaZDn3AAAAAAAAAAAAARaQ0hs1wB16AAMjHQ2FiVWwz9B8UtY3Ovr5PnsTwpC94nmipR16c8AA55n2nfFl3LyW8GCwQAAAAAAcdIBt02MN4es0g2qAAGys/XmGWTnc824YZAAAAAAAAAAAAHBy08VyxYXjT2k2YtqpvJt1DPADfaFVf/nVdt8fJQ2Nceo3qwuQZ9cWBtVAAAAZOMhe+fUltcbJyMMgAAAAAAAAAADTyhkE79O3iDIAAAAAkdkUpzqz9CaGCRzXt49DpUAd+LD0siQHkN4MchAAAAAAJMbzrboYvfUnq9IMsADOhhTiUSTnX8fc0bAAAAAHEbtElabcxIQAAAAGBLPxa/hW3WxIZp27UM8AAAAAJjDlH0JzW3tysmVWnDp0DLAAAAAC3ai2WCb0eXrxsgAAAAAAAAAAHFPzun9+gdGoAAAAAAAADniZ618uTnjt4MNggAAAAAEmvVp0sPbDPV6YXgA5sPFOitPK7cq4YZAAAAHge+kh0I3a7+UZEzqcodrTMUXlAFZAHU7Y0VrjarM4L5OjUMsAAAD0h5vf0hiMvoY7085BIAAAAAAAACx5/QN58q+WNSwAAAAAAAADjmKWiv8ASHcxhYAAAAAAAANnjnYWD09PG74atwgAAAAAAwe9Z9HF0xD1ukF4Ae+Tb2tOtlPLlXCsgAAAHSvMkSWrNdx1Kc2jjzvVs54ienONWDjs09bxom0NeZsOZc4g14k1X6Px6dA2oANlK8MwL3t7e601DvLGa8xDabtinCyPVSeOSDjkeFXWx5ZY+fm90XZxhYAAAAAAAAnkD9cU/QLBzuJkAAAAAAAAA4pWx6d6FA6FQAAAAAAAAPa0NVJPKbgcrOEAAAAAAHj6V1uY8XVnsdEMkANxkW7p28s45lwgAAAAwsWodiuxjp1qJ7rbZ0rc8tBz7+FR9vHsYwzwsCv5Ngm4MLUVTz7buMHUoMqzF9Z7ONS1bzOQtG3XsYZAAAAAAA1tKX7D9utUjq0AAAAAAAAAnllUBe3LvkjTsAAAAAAANXKs4zzx3MQXAAAAAAAAJJpbT4+fIHl9wIAAAAAACOZq6uInstANmoCRcW9p2e5y7gAAAANAp/ar2xjq0bjXXXrTm+3Os5WTxpv1wetjDZgAAB7SmyNS0KneTi862UiGgus5V1mUeoxyAAAAAAA45FSRS+aQ6tMUbdQAAAAAAAFk1tscM3q69uLkAAAAAAAVpY9EbdcQdWgAAAAAAAA3uGZNIuOfFdAMNgAAAAAB0lh1fnav1uiHTxAN94XLqW7ZByrgAAAANNl0tsR4Y518YmFEml7F42TpTHtqOnQNqAAgJbVobQ3vjzL5+mgMSyJfFPLtvV6zLeTfSnx9zQuAAAAAAAAAhM263j57bvSdvGFgAAAAAAAFvSio7c42QMEgAAAAARSpJXFOvjDZgAAAAAAADtaUVnfmdsOLsBAAAAAABCpBWPb1+o9NqAM7HuXWnL2BycgQAAAAde1fXiNx47eMLM6747JuTfrTfvHdqA3KjZ45wJvuth5rbwa2tf2xzoJxiVX1tWV1t4OjUeuaFs+kk5Vw1LAHXRWjfq6jmxFxaimvPPFpauAs0S7Eji7d+WpWjbd9MlIMqKqzONjWzGt7c0QxzcFP52FmjgZ4AAAAAAAA73vQtnaVpwOZcAAAAB4e8TtFVeR3sYAAAAAAAD085ZrWl2WeJ6AVkAAAAAB17RHYrG9Ye154ZIc8T/FO6lvHPGuFZAAAAHBrKRksW62MNqEljV0607qpvaH4pDeqes90r6ib93ld0Na7njWZIgunPdc0LO1t62dcy/J10rduInBdiLOhsEbtc7BNqoSAAAAAAAAAAAAAAAAAASGPdqPoRh5nCygAAAAKptSh9uuGOrQAAAAAAADta0JsPzW2HE2AgAAAAAEsWqpFF/U6YdfAMyG3uDEzuNkDDIAAAACPSCmc8aAdnGBJNnoNPrSGzDOy7E5ObF2R5fcCshBF5RXPRxaAew0Ut0F3adsniNVvp2ntf6t0aBngAAA9dhRqklzKTDk59qoAsDoQJN8WUSSDW3jBc8XBIAAAAAAAAAAC05nU1s8bIGCQAAANLSdk1t1KBuVAAAAAAAGfSZ7ueOfC9EMcgAAAAANdsa83ccf6ns9AJLditpc2/I0bAAAAADoRepNpq+zjDPAAAEisGnJxwNmWjz20EBxLAqzdaP1mkO/Uw2NH45468hsQAd5LRF+bRk2raoJDZjWmIbrasE9O5SQAAAHHIxdPIlogEduFnj5+8r/jWzFSpXGNqvmMgAAAAAAADKvr57uzn23Q59wAAAKjiubhdzEGQAAAAAAAmcMtTkZ9iPLbgQAAAAAA11WSSNes0g6uFm4VsYJkmUcbIAAAAABxApdR+3XxHVoAAAA2WtyMM26458L0hwcw3rDu/rB6HVAHc6JfOdWaxmk350rYmWa1gAAAAAAAAAAAGv2CVC4c6gvaxhlgAAAAAABZlZy/Xm1xx8gAADAz4taKiHexgAAAAAAAbC1IPOfKbgcnOAAAAAAxMuFbVIj1Pbc8cykNx6Xd8bIGCQAAAAHHMRtERip28YXAHbrAJANvqLD5+SRGp8lvZ8A1uF6XUDsYB6Q8/aaT/UtAZ3sGhYMUgAAAAAAAAAAAAAARunfoGhejTwG/UAAAAAABtNXzV9Cc4+RwcoAACvrBqnYrDx2KAAAAAAADmFi7/HyPC9EMNgAAAAAOlTT2ufR6od7WS+I3bqzt+Tk5AAAAABqJKY9sHrYw2YAduss17SOI2I8pu00s/U9zXg3adbOGllcUieneSxPq7euGzVzvbK1pgtjbJzrhhkAAAAAAAAAAAAAAAABT1w17s1rsdegAAAAAAAF0b6GTPh5AxyABxS900Ju1xB06AAAAAAAM/Aketawh4johAAAAAACERGVRX2WgG/j2F60JfPNv3GjYAAAA" alt="Hawks Logo">
+  </div>
+</div>
+
+<div class="hero-bar"></div>
+
+<!-- ─── ROLES ──────────────────────────────────────── -->
+<section class="section container">
+  <div class="section-label">U17 · 2026/27 Season</div>
+  <h2 class="section-title">System Archetypes</h2>
+
+  <div class="roles-grid">
+
+    <!-- ─── EAGLES ─── -->
+    <div class="role-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <h2>🦅 The Eagles</h2>
+          <span class="role-tag">Ball Handler</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-content">
+        <div class="content-grid">
+          <div class="content-block">
+            <div class="content-block-label offense">Offensive Trigger</div>
+            <ul class="concept-list">
+              <li><strong>Scan Before the Catch</strong>Read the floor before receiving so you can act immediately.</li>
+              <li><strong>Pass Up the Floor Early</strong>Push pace before the defence sets — find the transition advantage.</li>
+              <li><strong>Execute Option A</strong>Initiate the Pinch Layup to attack the paint on time.</li>
+              <li><strong>Make the Open 3 on the Kick-Out</strong>When the drive collapses help, find and hit the open shooter.</li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <div class="content-block-label defense">Defensive Identity</div>
+            <ul class="concept-list">
+              <li><strong>On-Ball Pest</strong>Disrupt the opponent's rhythm — make every dribble and catch uncomfortable.</li>
+              <li><strong>Force the Direction</strong>Dictate where the ball handler goes; never let them choose freely.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="impact-box">
+          <span class="impact-label">0.5s Rule</span>
+          <span class="impact-divider"></span>
+          <span class="impact-value">Scan &amp; Move</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── COBRAS ─── -->
+    <div class="role-card">
+      <div class="card-header gold-accent">
+        <div class="card-header-left">
+          <h2>🐍 The Cobras</h2>
+          <span class="role-tag">Wing Shooter</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-content">
+        <div class="content-grid">
+          <div class="content-block">
+            <div class="content-block-label offense">Offensive Trigger</div>
+            <ul class="concept-list">
+              <li><strong>Hammer Cut</strong>Attack the corner off the cut for Option B (Corner 3).</li>
+              <li><strong>Swing to Option E</strong>Relocate to the wing for the open 3 — elite feet-set speed required.</li>
+              <li><strong>Relocate Relentlessly</strong>Never stand still; always present a threat on the perimeter.</li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <div class="content-block-label defense">Defensive Identity</div>
+            <ul class="concept-list">
+              <li><strong>Transition Safety Valve</strong>Be the last line in transition — do not gamble for steals at the wrong moments.</li>
+              <li><strong>Release = Sprint to the Paint</strong>The moment the opponent releases, sprint to protect the paint.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="impact-box">
+          <span class="impact-label">Core Rule</span>
+          <span class="impact-divider"></span>
+          <span class="impact-value">Relocate or Strike</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── FOXES ─── -->
+    <div class="role-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <h2>🦊 The Foxes</h2>
+          <span class="role-tag">Mid-Post Connector</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-content">
+        <div class="content-grid">
+          <div class="content-block">
+            <div class="content-block-label offense">Offensive Trigger</div>
+            <ul class="concept-list">
+              <li><strong>Seal the Elbow / Pinch Post</strong>Establish position to be a hub — receive, read, and distribute.</li>
+              <li><strong>Hit the Cutter (Option A)</strong>Deliver on time, on target to the cutting Hawk.</li>
+              <li><strong>Face Up &amp; Attack (Option C)</strong>When the defence concedes the catch, attack the basket off the face-up.</li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <div class="content-block-label defense">Defensive Identity</div>
+            <ul class="concept-list">
+              <li><strong>Force ICE or Weak Side</strong>Take away the ball handler's preferred direction — channel into the help.</li>
+              <li><strong>High-IQ Help Rotations</strong>Read the play two steps ahead and rotate before the problem arrives.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="impact-box">
+          <span class="impact-label">Fox Motto</span>
+          <span class="impact-divider"></span>
+          <span class="impact-value">Find the Better Look</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── BEARS ─── -->
+    <div class="role-card">
+      <div class="card-header gold-accent">
+        <div class="card-header-left">
+          <h2>🐻 The Bears</h2>
+          <span class="role-tag">Interior Anchor</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-content">
+        <div class="content-grid">
+          <div class="content-block">
+            <div class="content-block-label offense">Offensive Trigger</div>
+            <ul class="concept-list">
+              <li><strong>Set Stationary Screens</strong>Lock in and set clean screens to free the Cobra for Option B.</li>
+              <li><strong>Open to Ball &amp; Roll (Option D)</strong>Pin-screen, open to the ball, and roll hard to the rim to receive.</li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <div class="content-block-label defense">Defensive Identity</div>
+            <ul class="concept-list">
+              <li><strong>Wall Up in the Cylinder</strong>Protect the paint without fouling — be immovable, not reckless.</li>
+              <li><strong>Cover Home in the Half-Court</strong>Hold your defensive anchor position and do not vacate the paint unnecessarily.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="impact-box">
+          <span class="impact-label">The Anchor</span>
+          <span class="impact-divider"></span>
+          <span class="impact-value">Protect the Home</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── BADGERS ─── -->
+    <div class="role-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <h2>🦡 The Badgers</h2>
+          <span class="role-tag">Swiss-Army Knife</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-content">
+        <div class="content-single">
+          <div class="content-block-label defense" style="margin-bottom: 14px;">Expectations</div>
+          <ul class="concept-list">
+            <li><strong>Maximum Defensive Intensity</strong>Every possession is an opportunity to flip the game — bring full effort from the moment you step on the floor.</li>
+            <li><strong>Identify Enemy Flaws</strong>Read the opponent from the bench. Enter the game already knowing their tendencies and weaknesses.</li>
+            <li><strong>Make the Open Corner 3</strong>When the shot comes, be ready — no hesitation, elite feet-set, make it count.</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <span class="impact-label">Mindset</span>
+          <span class="impact-divider"></span>
+          <span class="impact-value">Change the Game</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── DEVELOPMENT PATHWAY ────────────────────────── -->
+<section class="section container">
+  <div class="section-label">U17 · 2026/27 Season</div>
+  <h2 class="section-title">Development Pathway</h2>
+
+  <div class="roles-grid">
+
+    <!-- ─── JOEY'S ─── -->
+    <div class="role-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <h2>🦘 The Joey's</h2>
+          <span class="role-tag">Development Squad</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-content">
+        <div class="content-single">
+          <div class="content-block-label defense" style="margin-bottom: 14px;">What It Is</div>
+          <ul class="concept-list">
+            <li><strong>Hand-Picked Young Talent</strong>A select group of standout younger players invited to train alongside the main squad — think of it as our own "practice squad."</li>
+            <li><strong>Practice Only</strong>Joey's are not eligible to play matches for the U17s, so main squad minutes are never at risk.</li>
+            <li><strong>Raise the Standard</strong>They join scrimmages and drills purely to push the pace, physicality, and competitiveness of every session.</li>
+            <li><strong>A Pathway, Not a Roster Spot</strong>Selection rewards potential and work ethic — a proving ground for the future, not a shortcut to game minutes.</li>
+          </ul>
+        </div>
+        <div class="impact-box">
+          <span class="impact-label">Purpose</span>
+          <span class="impact-divider"></span>
+          <span class="impact-value">Sharpen the Squad</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <p>© 2026 <strong>Warwickshire Hawks Basketball</strong>. Developing the whole person through the game.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.role-card').forEach(card => {
+    card.querySelector('.card-header').addEventListener('click', () => {
+      const isActive = card.classList.contains('active');
+      document.querySelectorAll('.role-card').forEach(c => c.classList.remove('active'));
+      if (!isActive) card.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
