@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warwickshire Hawks — Player Intro</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A1F8C;
+    --navy-dark: #0F1260;
+    --navy-mid: #252AA0;
+    --gold: #D4A017;
+    --gold-light: #F0BB30;
+    --gold-pale: #FBF0CC;
+    --white: #ffffff;
+    --off-white: #F5F5F8;
+    --text: #1a1a2e;
+    --text-light: #5a5a7a;
+    --border: #dde0f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--off-white);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── HERO ─────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.02) 40px,
+      rgba(255,255,255,0.02) 80px
+    );
+  }
+
+  .hero-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 32px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-logo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    object-fit: cover;
+    box-shadow: 0 0 40px rgba(212,160,23,0.35);
+    flex-shrink: 0;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ─── CONTAINER ─────────────────────────────────── */
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .section { padding: 64px 0; }
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 40px;
+  }
+
+  /* ─── STRATEGY CARDS ───────────────────────────── */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+
+  .strategy-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 35px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .strategy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+  }
+
+  .strategy-card h3 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .strategy-card p.intro-text {
+    font-size: 1.05rem;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--off-white);
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .concept-list { list-style: none; }
+  .concept-list li { 
+    margin-bottom: 16px; 
+    padding-left: 28px; 
+    position: relative; 
+    color: var(--text-light); 
+    font-size: 0.95rem;
+  }
+  .concept-list li::before { 
+    content: '▶'; 
+    position: absolute; 
+    left: 0; 
+    color: var(--gold); 
+    font-size: 0.8rem; 
+    top: 4px; 
+  }
+  .concept-list li strong {
+    color: var(--navy);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ─── CULTURE GRID (3x2) ───────────────────────── */
+  .culture-bg {
+    background: var(--navy-dark);
+    padding: 80px 0;
+  }
+
+  .culture-bg .section-label { color: var(--gold-light); }
+  .culture-bg .section-title { color: var(--white); }
+
+  .culture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .culture-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .culture-card:hover {
+    background: rgba(212,160,23,0.1);
+    border-color: var(--gold);
+  }
+
+  .culture-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .culture-card h4 {
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .culture-card p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* ─── CTA & PLAYBOOK SECTION ────────────────────── */
+  .cta-section {
+    padding: 80px 0 60px;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .cta-box {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(26,31,140,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-box.primary {
+    border-color: var(--navy);
+    background: #fcfdff;
+  }
+
+  .cta-box h2 {
+    font-size: 1.8rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .cta-box p {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .spond-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .spond-btn:hover { background: var(--navy-mid); transform: translateY(-2px); }
+
+  .playbook-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .playbook-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─────────────────────────────────────── */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.88rem;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .culture-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-logo { margin: 0 auto; }
+    .strategy-grid, .culture-grid, .cta-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Warwickshire Hawks</div>
+      <h1>Player Intro<br><span>U17 local league</span></h1>
+      <p class="hero-sub">We aren't obsessed with just winning; we're obsessed with playing the right way. We are building a squad based on leadership, discipline, and high-level basketball IQ.</p>
+    </div>
+    <img class="hero-logo" src="data:image/jpeg;base64,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" alt="Hawks Logo">
+  </div>
+</div>
+
+<div class="hero-bar" style="background: var(--gold); height: 6px;"></div>
+
+<section class="section container">
+  <div class="section-label">Our System</div>
+  <h2 class="section-title">How We Play</h2>
+  
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="tag">Offense</div>
+      <h3>Share It</h3>
+      <p class="intro-text">Our offense is built on continuous movement. We break teams down through rapid ball movement and spacing, not individual isolations.</p>
+      <ul class="concept-list">
+        <li><strong>Drive and Kick</strong> Collapse the paint to force help, then find the open shooter.</li>
+        <li><strong>Corner Spacing</strong> Gravity matters. Stay wide to create driving lanes and pull defenders out.</li>
+        <li><strong>Good to Great</strong> Turn down a "good" contested shot to make one extra pass for a "great" open look.</li>
+        <li><strong>Tactical Sets</strong> We use tools like the Hammer Series and Spain P&R to force defensive mistakes.</li>
+      </ul>
+    </div>
+
+    <div class="strategy-card">
+      <div class="tag" style="background: var(--navy); color: var(--white);">Defense</div>
+      <h3>No Middle</h3>
+      <p class="intro-text">We dictate where the opponent goes. Defense is an active choice, utilizing the sidelines and baseline as our extra defenders.</p>
+      <ul class="concept-list">
+        <li><strong>Force Baseline</strong> Never allow the ball handler access to the middle of the paint. Dictate their path.</li>
+        <li><strong>The Low Man Helps</strong> Rim protection is a team responsibility, led by the furthest weak-side defender.</li>
+        <li><strong>X-Out Rotations</strong> When help comes, we scramble and rotate back out as a single connected five-man unit.</li>
+        <li><strong>Talk or Sit</strong> If you are quiet, you are a liability. Calling screens and assignments is mandatory.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="culture-bg">
+  <div class="container">
+    <div class="section-label">The Hawks Culture</div>
+    <h2 class="section-title">The Non-Negotiables</h2>
+    
+    <div class="culture-grid">
+      <div class="culture-card">
+        <span class="culture-icon">🚪</span>
+        <h4>Leave Ego at the Door</h4>
+        <p>It's about the name on the front of the jersey, not the back. Team success is our only metric.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-icon">⚡</span>
+        <h4>Next Play Mentality</h4>
+        <p>Mistakes happen. Don't dwell on them. Your job is to make the very next play count.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-icon">💼</span>
+        <h4>No-Nonsense Attitude</h4>
+        <p>We show up on time, ready to work. We don't waste our teammates' time with distractions.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-icon">🔥</span>
+        <h4>Effort is Your Job</h4>
+        <p>The coach shouldn't have to motivate you to play hard. Effort is the price of entry.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-icon">🤝</span>
+        <h4>Pick Each Other Up</h4>
+        <p>Celebrate your teammates. If someone falls or makes a mistake, be the first one there to lift them.</p>
+      </div>
+      <div class="culture-card">
+        <span class="culture-icon">📉</span>
+        <h4>Process over Results</h4>
+        <p>We focus on getting better every day. If we execute the system, the wins will take care of themselves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section container">
+  <div class="cta-grid">
+    <div class="cta-box primary">
+      <h2>Ready to Level Up?</h2>
+      <p>I am looking for players who want to take ownership of their own development. If you want to discuss your specific development or your role in the squad, reach out.</p>
+      <a href="https://spond.com/welcome" class="spond-btn">Message Coach via Spond</a>
+    </div>
+
+    <div class="cta-box">
+      <h2>Study the System</h2>
+      <p>Get a head start on the tactical DNA. Review our 2026/2027 Playbook to master our offensive sets and defensive rotations.</p>
+      <a href="WH - U17 - Playbook 2026.html" class="playbook-btn">Access the 26/27 Playbook</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <strong>Warwickshire Hawks Basketball</strong>. Developing the whole person through the game.</p>
+</footer>
+
+</body>
+</html>
