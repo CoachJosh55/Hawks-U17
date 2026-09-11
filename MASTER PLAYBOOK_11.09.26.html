@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warwickshire Hawks U17 — Master Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A1F8C;
+    --navy-dark: #0F1260;
+    --navy-mid: #252AA0;
+    --gold: #D4A017;
+    --gold-light: #F0BB30;
+    --gold-pale: #FBF0CC;
+    --white: #ffffff;
+    --off-white: #F5F5F8;
+    --text: #1a1a2e;
+    --text-light: #5a5a7a;
+    --border: #dde0f0;
+    --green-bg: #e6f4ea;
+    --green-text: #137333;
+    --red-bg: #fce8e6;
+    --red-text: #c5221f;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--off-white);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── HERO ─────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.02) 40px,
+      rgba(255,255,255,0.02) 80px
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 680px;
+    line-height: 1.6;
+  }
+
+  .hero-bar {
+    background: var(--gold);
+    height: 6px;
+  }
+
+  /* ─── NAVIGATION TABS ───────────────────────────── */
+  .nav-tabs {
+    background: var(--navy-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .tabs-container {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    padding: 0 32px;
+  }
+
+  .tab-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 16px 20px;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    border: none;
+    border-bottom: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover {
+    color: var(--gold-light);
+  }
+
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ─── CONTAINER ─────────────────────────────────── */
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 48px 0;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+
+  /* ─── CARDS & LISTS ──────────────────────────────── */
+  .offense-intro {
+    background: var(--white);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+    box-shadow: 0 6px 20px rgba(26,31,140,0.08);
+  }
+
+  .offense-intro h3 {
+    font-size: 1.6rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 16px;
+    margin-bottom: 36px;
+  }
+
+  .action-tile {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    transition: all 0.25s ease;
+  }
+
+  .action-tile:hover {
+    border-color: var(--navy);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(26,31,140,0.1);
+  }
+
+  .action-tile-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background: var(--navy);
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .action-tile h4 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .flow-sequence {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .flow-step {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 8px solid var(--navy);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 4px 14px rgba(26,31,140,0.05);
+  }
+
+  .flow-step h4 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  /* ─── PLAYER TIPS ────────────────────────────────── */
+  .tips-section {
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+
+  .tips-group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+
+  .tips-group h4 {
+    font-size: 1.4rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--gold-pale);
+    padding-bottom: 6px;
+  }
+
+  .tip-item {
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.98rem;
+  }
+
+  .tip-do {
+    background: var(--green-bg);
+    color: var(--green-text);
+    border-left: 4px solid var(--green-text);
+  }
+
+  .tip-dont {
+    background: var(--red-bg);
+    color: var(--red-text);
+    border-left: 4px solid var(--red-text);
+  }
+
+  /* ─── VIDEO VAULT STYLES ─────────────────────────── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .video-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-thumb {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .video-thumb-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 18, 96, 0.35);
+    transition: background 0.2s;
+  }
+
+  .video-card:hover .video-thumb-play {
+    background: rgba(15, 18, 96, 0.15);
+  }
+
+  .play-icon {
+    width: 54px;
+    height: 54px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+
+  .video-card:hover .play-icon {
+    transform: scale(1.1);
+  }
+
+  .play-icon::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 16px;
+    border-color: transparent transparent transparent var(--navy-dark);
+    margin-left: 4px;
+  }
+
+  .video-info {
+    padding: 16px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .video-info h4 {
+    font-size: 1.2rem;
+    color: var(--navy);
+    text-transform: uppercase;
+  }
+
+  .video-info a {
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .video-info a:hover {
+    color: var(--gold);
+  }
+
+  /* ─── FOOTER ─────────────────────────────────────── */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.88rem;
+    margin-top: 40px;
+  }
+
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  @media (max-width: 768px) {
+    .tabs-container { overflow-x: auto; padding: 0 16px; }
+    .tab-btn { font-size: 0.95rem; padding: 12px 14px; white-space: nowrap; }
+    .action-grid, .video-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ──────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Warwickshire Hawks U17</div>
+    <h1>Master <span>Playbook</span></h1>
+    <p class="hero-sub">Sequences, Base Offense, Player Tips, Additional Actions, Defensive System, and Video Vault.</p>
+  </div>
+</div>
+
+<div class="hero-bar"></div>
+
+<!-- ─── NAVIGATION TABS ───────────────────────────── -->
+<div class="nav-tabs">
+  <div class="tabs-container">
+    <button class="tab-btn active" onclick="switchTab('offence-overview')">Offence Overview</button>
+    <button class="tab-btn" onclick="switchTab('green-eggs')">Green Eggs</button>
+    <button class="tab-btn" onclick="switchTab('player-tips')">Player Tips</button>
+    <button class="tab-btn" onclick="switchTab('additional-offense')">Additional Offense</button>
+    <button class="tab-btn" onclick="switchTab('defence')">Defensive System</button>
+    <button class="tab-btn" onclick="switchTab('videos')">Videos</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ═════════════════════════════════════════════════ -->
+  <!-- 1) OFFENCE OVERVIEW                               -->
+  <!-- ═════════════════════════════════════════════════ -->
+  <div id="tab-offence-overview" class="tab-content active">
+    <div class="section-label">Offence Overview</div>
+    <h2 class="section-title">Offence Principles</h2>
+
+    <div class="offense-intro">
+      <p>Sequences of actions to cause chaos and force mistakes. We want layups and open 3s.</p>
+    </div>
+
+    <div class="section-label">Consecutive Actions / Concepts</div>
+    <div class="action-grid">
+      <div class="action-tile">
+        <span class="action-tile-badge">1</span>
+        <h4>Pinch Post (Triangle Concept)</h4>
+        <p>Three players form a triangle around the elbow/high post, strong-side wing & weakside wing. Using an entry pass, cuts and hand-off/ screen to create downhill baseline drives.</p>
+      </div>
+
+      <div class="action-tile">
+        <span class="action-tile-badge">2</span>
+        <h4>Hammer (Spurs 2014)</h4>
+        <p>A baseline drive draws help before a weak-side player sets a back screen, freeing a corner shooter for a kick-out three behind the defence.</p>
+      </div>
+
+      <div class="action-tile">
+        <span class="action-tile-badge">3</span>
+        <h4>77 (Luka Dončić)</h4>
+        <p>A double step-up screen action where the ball-handler attacks using two on-ball screens, creating opportunities to turn the corner, reject, hit the roller, or find shooters.</p>
+      </div>
+    </div>
+
+    <div class="section-label">Alternate Actions to Deal with Breakdowns</div>
+    <div class="action-grid">
+      <div class="action-tile">
+        <span class="action-tile-badge">4</span>
+        <h4>Spain PnR (James Harden)</h4>
+        <p>A ball-screen with a third player setting a back screen on the screener’s defender, creating confusion and opening the roll, lob, drive, or kick-out.</p>
+      </div>
+
+      <div class="action-tile">
+        <span class="action-tile-badge">5</span>
+        <h4>Loop (Tony Parker)</h4>
+        <p>A guard loops around 3 baseline screens in quick succession & receiving the ball on the move toward the middle, creating an advantage for a pull-up, drive, or pass.</p>
+      </div>
+    </div>
+
+    <div class="offense-intro" style="border-color: var(--navy);">
+      <p><strong>· Gravity</strong> = using your movement (cut/ drive/ flare/ hold) to occupy the attention of the defence</p>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════ -->
+  <!-- 2) BASE OFFENSE EXPLAINED - GREEN EGGS            -->
+  <!-- ═════════════════════════════════════════════════ -->
+  <div id="tab-green-eggs" class="tab-content">
+    <div class="section-label">Base Offense Explained</div>
+    <h2 class="section-title">GREEN EGGS</h2>
+
+    <div class="offense-intro">
+      <p style="font-weight: 700; font-size: 1.2rem; color: var(--navy);">Pinch post -&gt; Hammer -&gt; 77</p>
+    </div>
+
+    <div class="flow-sequence">
+      <div class="flow-step">
+        <h4>1) Setup</h4>
+        <p>Eagles & Fox determine the strong side by setting up on an elbow and NBA wing (nearly our halfcourt).</p>
+      </div>
+
+      <div class="flow-step">
+        <h4>2) Triangle</h4>
+        <p>A safety Cobra is positioned on the weakside wing as a release valve (if the entry pass is denied). - TRIANGLE</p>
+      </div>
+
+      <div class="flow-step">
+        <h4>3) Pinch Post & Hammer Action</h4>
+        <p>Eagle executes entry pass to Fox and cuts towards basket looking for a layup. - PINCH POST</p>
+        <p style="margin-left: 20px; margin-top: 6px;"><strong>3A)</strong> When Fox receives ball Bear/ Badger sets a back screen for Striking Cobra - HAMMER</p>
+        <p style="margin-left: 20px;"><strong>3B)</strong> Striking Cobra takes screen and cuts to weakside corner looking for a 3 - HAMMER</p>
+        <p style="margin-left: 20px;"><strong>3C)</strong> After setting the screen the Bear/ Badger will roll to the basket - HAMMER</p>
+        <p style="margin-left: 20px;"><strong>3D)</strong> Striking Cobra holds the corner regardless of whether they receive the ball - GRAVITY</p>
+      </div>
+
+      <div class="flow-step">
+        <h4>4) Face Up & Drives</h4>
+        <p>Fox Faces up as Eagle cuts to open sight lines for pass back to Eagle/ Corner 3/ Rolling screener/ Safety Cobra - PINCH POST</p>
+        <p style="margin-left: 20px; margin-top: 6px;"><strong>4A)</strong> If no passing lanes are open Fox is clear to drive/ shoot looking to score - GRAVITY</p>
+      </div>
+
+      <div class="flow-step">
+        <h4>5) Flare</h4>
+        <p>After cutting through the Eagles flares to same side corner and holds - GRAVITY</p>
+      </div>
+
+      <div class="flow-step">
+        <h4>6) Ball Reversal</h4>
+        <p>If no options yield a good shot the ball is reversed to the Safety Cobra on the wing - 77</p>
+      </div>
+
+      <div class="flow-step">
+        <h4>7) 77 Action</h4>
+        <p>The Fox & Bear/ Badger set a double step-up ball screen allowing the Cobra to attack the middle - 77</p>
+        <p style="margin-left: 20px; margin-top: 6px;"><strong>7A)</strong> 1 screener must roll - GRAVITY</p>
+        <p style="margin-left: 20px;"><strong>7B)</strong> 1 screener must flare - GRAVITY</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════ -->
+  <!-- 3) PLAYER TIPS                                    -->
+  <!-- ═════════════════════════════════════════════════ -->
+  <div id="tab-player-tips" class="tab-content">
+    <div class="section-label">Execution Details</div>
+    <h2 class="section-title">Player Tips</h2>
+
+    <div class="tips-section">
+      <!-- INITIAL SETUP -->
+      <div class="tips-group">
+        <h4>Player tips - Initial setup:</h4>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Eagle (Ball Handler)</strong>
+        <div class="tip-item tip-do">✓ - Wait for the Fox's feet to be fully set at the elbow before passing. Timing is everything.</div>
+        <div class="tip-item tip-dont">✗ - Don't pass while the Fox is still moving — a moving target fumbles the catch and kills the possession.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Fox (Pinch Post)</strong>
+        <div class="tip-item tip-do">✓ - Flash to the elbow with purpose. Catch defenders in a lull. Present a firm target with both hands.</div>
+        <div class="tip-item tip-dont">✗ - Don't drift past the elbow to the three-point line. The whole play depends on your position threatening the paint.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Badger/ Bear (Hammer Screener)</strong>
+        <div class="tip-item tip-do">✓ - Stay patient. Your action starts when the ball hits the Fox. Use this time to read your defender.</div>
+        <div class="tip-item tip-dont">✗ - Don't creep toward the Cobra early. The defence will see it and cheat the screen before it's even set.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Shooter)</strong>
+        <div class="tip-item tip-do">✓ - Stand still. Look bored. The less you move now, the more devastating the cut will be.</div>
+        <div class="tip-item tip-dont">✗ - Don't drift toward the corner early. You'll drag your defender with you and telegraph the whole play.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Safety)</strong>
+        <div class="tip-item tip-do">✓ - Hold the weakside wing and read the whole floor. You are the reset button when things breaks down.</div>
+        <div class="tip-item tip-dont">✗ - Don't drift toward the strong side. If the Eagle needs a bailout, you have to be exactly where expected.</div>
+      </div>
+
+      <!-- PINCH POST -->
+      <div class="tips-group">
+        <h4>Player tips - Pinch Post:</h4>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Eagle (Ball Handler)</strong>
+        <div class="tip-item tip-do">✓ - Cut hard regardless. Sell it every time. Your commitment is what makes the fake dangerous.</div>
+        <div class="tip-item tip-dont">✗ - Don't slow down to see if the handoff is coming. Decelerating lets your defender recover and closes both options at once.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Fox (Pinch Post)</strong>
+        <div class="tip-item tip-do">✓ - Face up so you can read the space. Pass to an open cutter/ shooter, or punish your defender for helping.</div>
+        <div class="tip-item tip-dont">✗ - Never attack baseline, unless you score a layup. Attacking middle opens the floor up for you, baseline closes the floor.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Badger/ Bear (Hammer Screener)</strong>
+        <div class="tip-item tip-do">✓ - The moment the ball hits the Fox's hands is your cue. Timing starts from the catch, not the pivot.</div>
+        <div class="tip-item tip-dont">✗ - Don't wait to see real or fake handoff — your job is identical either way. Move when the ball is entered.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Shooter)</strong>
+        <div class="tip-item tip-do">✓ - One hard step toward the basket to freeze your defender, then wait for the screen to arrive before cutting.</div>
+        <div class="tip-item tip-dont">✗ - Don't cut before the screen is set. Running into an unset screen is an offensive foul every time.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Safety)</strong>
+        <div class="tip-item tip-do">✓ - Stay alert. If the Fox attacks off the fake, the play resolves quickly and transition defence starts.</div>
+        <div class="tip-item tip-dont">✗ - Don't ball-watch and forget your defensive duty. If the Fox scores, someone needs to be the first back.</div>
+      </div>
+
+      <!-- HAMMER -->
+      <div class="tips-group">
+        <h4>Player tips - Hammer:</h4>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Eagle (Ball Handler)</strong>
+        <div class="tip-item tip-do">✓ - Look at the roller first. Eyes to the roller keep the Cobra's defender from cheating.</div>
+        <div class="tip-item tip-dont">✗ - Don't look at the corner first. That telegraphs the kick pass and lets weakside defenders pre-rotate.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Fox (Gravity)</strong>
+        <div class="tip-item tip-do">✓ - Hold the elbow, if your defender stops the Eagle you are the easiest cut & pass for a layup.</div>
+        <div class="tip-item tip-dont">✗ - Don't clog the passing lanes by cutting early, we want the ball to reach the corner for a 3.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Badger/ Bear (Hammer Screener / Roller)</strong>
+        <div class="tip-item tip-do">✓ - Set with your back towards the corner. Hold the screen for a full 2 second count, then roll with both hands up.</div>
+        <div class="tip-item tip-dont">✗ - Don't roll before the screen is fully set. A roll-before-screen is called illegal every single time in a game.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Shooter)</strong>
+        <div class="tip-item tip-do">✓ - Run your defender into the screen. Brush shoulder-to-shoulder. The tighter you use it, the harder it is to fight over.</div>
+        <div class="tip-item tip-dont">✗ - Don't drift around the screen. A wide cut gives the defender room to recover and makes the Hammer pointless.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Safety)</strong>
+        <div class="tip-item tip-do">✓ - If all options are covered you are the escape valve. Call a name or clap to help others find you.</div>
+        <div class="tip-item tip-dont">✗ - Don't drift into the action. Your value is precisely that you're not in it — you hold the defence honest by staying put.</div>
+      </div>
+
+      <!-- 77 -->
+      <div class="tips-group">
+        <h4>Player tips - 77:</h4>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Eagle (Gravity)</strong>
+        <div class="tip-item tip-do">✓ - After your Pinch Post cut flare out to the same corner and hold. Your defender will be forced into a weak help position.</div>
+        <div class="tip-item tip-dont">✗ - Don't drift up the court or clog inside the 3pt line. When the Cobra comes off the 77 you have to be ready to shoot.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Fox (77 Screener)</strong>
+        <div class="tip-item tip-do">✓ - As soon as the ball reaches the safety Cobra that's your cue to set a step-up screen on the ball.</div>
+        <div class="tip-item tip-dont">✗ - Don't roll/ flare too early. Hold the screen for a 2-second count and then attack hard.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Gravity)</strong>
+        <div class="tip-item tip-do">✓ - After your Hammer cut hold the corner to force your defender into a weak help position.</div>
+        <div class="tip-item tip-dont">✗ - Don't drift up the 3pt line or inside the 3pt line. You'll clog the lanes for the rollers/ passers.</div>
+
+        <strong style="color: var(--navy); display: block; margin-top: 10px;">Cobra (Ball Handler)</strong>
+        <div class="tip-item tip-do">✓ - If you can get a layup do it. If no one fights through the screens then take the 3pt shot. If the defence collapses find a shooter/ roller.</div>
+        <div class="tip-item tip-dont">✗ - Don't leave any gaps for defenders to fight over the screens. Brush the screeners and read the other defenders.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════ -->
+  <!-- 4) ADDITIONAL OFFENSE EXPLAINED                   -->
+  <!-- ═════════════════════════════════════════════════ -->
+  <div id="tab-additional-offense" class="tab-content">
+    <div class="section-label">Additional Sets</div>
+    <h2 class="section-title">Additional Offense Explained</h2>
+
+    <!-- SPAIN PNR -->
+    <div class="flow-sequence" style="margin-bottom: 40px;">
+      <h3 style="color: var(--navy); font-size: 1.8rem; margin-bottom: 12px;">Spain PnR</h3>
+      <p style="margin-bottom: 12px; font-style: italic;">Also referred to as Stack.</p>
+
+      <div class="flow-step">
+        <p>1) Both Cobras plant themselves deep in the corners, Fox & Badger/ Bear on each elbow</p>
+      </div>
+      <div class="flow-step">
+        <p>2) Eagle sets up in the middle between the 3pt line and half-court</p>
+      </div>
+      <div class="flow-step">
+        <p>3) Both the Fox and the Badger/ Bear set a step-up screen</p>
+        <p style="margin-left: 20px; margin-top: 4px;"><strong>3A)</strong> The Fox is setting a screen looking to roll</p>
+        <p style="margin-left: 20px;"><strong>3B)</strong> The Badger/ Bear is setting a screen looking to flare</p>
+      </div>
+      <div class="flow-step">
+        <p>4) Eagle used the screens and attacks</p>
+      </div>
+      <div class="flow-step">
+        <p>5) Someone will be open, find the open man.</p>
+      </div>
+    </div>
+
+    <!-- LOOP -->
+    <div class="flow-sequence" style="margin-bottom: 40px;">
+      <h3 style="color: var(--navy); font-size: 1.8rem; margin-bottom: 12px;">Loop</h3>
+      <p style="margin-bottom: 12px; font-style: italic;">Also referred to as Tony.</p>
+
+      <div class="flow-step">
+        <p>1) Cobra (Screener) in weakside corner, Cobra (Zipper) under the basket, Fox/ Badger/ Bear on each elbow</p>
+        <p style="margin-left: 20px; margin-top: 4px;"><strong>1A)</strong> Eagle is on a wing - their choice, determines the strong side.</p>
+      </div>
+      <div class="flow-step">
+        <p>2) Fox & Badger/ Bear step into the paint and set an elevator screen.</p>
+      </div>
+      <div class="flow-step">
+        <p>3) Cobra (under the basket) zipper cuts up through the elevator screens looking to catch at the top.</p>
+      </div>
+      <div class="flow-step">
+        <p>4) Weakside Cobra, Fox & Badger/ Bear set staggered screens along the baseline for the Eagle to brush cut off</p>
+        <p style="margin-left: 20px; margin-top: 4px;"><strong>4A)</strong> Cobra flares to opposite corner</p>
+        <p style="margin-left: 20px;"><strong>4B)</strong> Fox looks to seal their defender in the dunker spot</p>
+        <p style="margin-left: 20px;"><strong>4C)</strong> Badger/ Bear looks to set a hammer screen on the Cobra at the top</p>
+      </div>
+      <div class="flow-step">
+        <p>5) Eagle catches on opposite side looking to attack middle</p>
+      </div>
+      <div class="flow-step">
+        <p>6) Someone will be open, find the open man.</p>
+      </div>
+    </div>
+
+    <!-- SLOB -->
+    <div class="flow-sequence">
+      <h3 style="color: var(--navy); font-size: 1.8rem; margin-bottom: 12px;">SLOB</h3>
+      <div class="flow-step">
+        <p>Green Eggs but setup with the Eagle as the inbounder. Everything else is exactly the same.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════ -->
+  <!-- 5) DEFENSIVE SYSTEM                               -->
+  <!-- ═════════════════════════════════════════════════ -->
+  <div id="tab-defence" class="tab-content">
+    <div class="section-label">Defensive Architecture</div>
+    <h2 class="section-title">Defensive System</h2>
+
+    <div class="offense-intro">
+      <h3>No-Middle Man-to-Man Defense</h3>
+      <p>One rule. Every player. Every possession. We take away the middle of the floor.</p>
+      <blockquote style="margin-top: 12px; font-weight: 700; color: var(--navy); border-left: 4px solid var(--gold); padding-left: 12px;">
+        🛡️ The Core Rule: "Take away the Middle Third. Force baseline. Rotate together."
+      </blockquote>
+      <p style="margin-top: 8px;">No-middle means every on-ball defender angles their body to funnel the ball-handler toward the Side Thirds. Never the Middle Third. Our help side is pre-loaded weakside.</p>
+    </div>
+
+    <div class="flow-sequence">
+      <div class="flow-step">
+        <h4>1) On-Ball — Force Baseline (Ice / Weak)</h4>
+        <p>Lead foot on the ball-handler shades them away from middle third. Guide them to the Side Thirds. Big calls "Ice" or "Weak" — Guard complies.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER allow a middle drive. Baseline is recoverable. Middle Third is a layup.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>2) Help Side — Pre-loaded Weakside</h4>
+        <p>First and second help defenders positioned one pass away on the Weak Side. Take away passing lanes, hands up in line with their man and the ball.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ Never stay silent, tell your teammates where you are and what's near them.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>3) Baseline Drive — Full Rotation</h4>
+        <p>When the ball beats their defender baseline: nearest weakside big cuts off the drive. On-ball defender chases from behind. All others rotate together — no one stands still.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER leave the strongside wing/ corner to rotate onto the ball. 1 pass away means it's an easy bailout.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>4) Ball Screen — Ice / Weak / Drop / Under</h4>
+        <p>Big calls "Ice" to force baseline — Guard complies, staying angled. By default big is in "Drop". Big shadows the ball within arm's reach of screener, protecting the rim. By default guard goes "Under". Guard goes beneath the screen to stop drives.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER switch ball screens by default. Switches create middle-driving mismatches.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>5) Clipped / Reject — Communicate</h4>
+        <p><strong>"Clipped"</strong> — ball defender hit by a screen, handler turns the corner. Call it immediately.</p>
+        <p><strong>"Reject"</strong> — ball handler avoids the screen to attack the basket. This must not be allowed — it beats our Ice coverage.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER go silent when you're clipped. Help defenders need the call to rotate.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>6) Wolf — On-Ball Trap</h4>
+        <p>Aggressive Trap after an Iced or Weaked ball screen - in the side thirds (so sideline is an extra defender). Cover tightly with an arm up to deter skip passes to the other side. Stunt & Recover if needed — buy time for teammates to close out.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER gamble for the steal when trapping. Stay disciplined and force a bad decision.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>7) Home — Get Back First</h4>
+        <p>On any transition, the deepest player must get "Home" — head under the basket. The Home position is the anchor. Cover 2 starts here: one defender, two offensive players (corner cutter + Crackback).</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER gamble on a steal when you're supposed to be getting Home.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>8) Top Lock — Elite Shooters</h4>
+        <p>Facing a great shooter: angle your body to the high side to prevent catches above the 3pt line. Force baseline only. Never let them catch above the arc and get a free look. Backdoor/ burn cuts are inevitable, must rely on teammates to rotate.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER go under a screen when Top Locking — fight over to deny the catch above the line.</div>
+      </div>
+
+      <div class="flow-step">
+        <h4>9) Communication — Always Talking</h4>
+        <p>Call screens ("Screen left!"), drives ("Help!"), and rotations ("I've got baseline!", "Corner!") on every single possession. Silent defence is broken defence — even when you're perfectly positioned.</p>
+        <div class="tip-item tip-dont" style="margin-top: 8px;">✗ NEVER go silent. Talking costs nothing. Getting scored on does.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════ -->
+  <!-- 6) VIDEO LIBRARY                                  -->
+  <!-- ═════════════════════════════════════════════════ -->
+  <div id="tab-videos" class="tab-content">
+    <div class="section-label">Visual Breakdown</div>
+    <h2 class="section-title">Video Library</h2>
+
+    <div class="video-grid">
+      <!-- 1 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=BivPYasAQnI" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/BivPYasAQnI/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=BivPYasAQnI" target="_blank">Pinch Post</a></h4>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=fJk83er6AeI" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/fJk83er6AeI/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=fJk83er6AeI" target="_blank">Pinch Post Face up</a></h4>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=3Q3mxs2u86o" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/3Q3mxs2u86o/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=3Q3mxs2u86o" target="_blank">Pinch Post Pass</a></h4>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=p8nX2tH7lww" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/p8nX2tH7lww/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=p8nX2tH7lww" target="_blank">Hammer Action</a></h4>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=bL61sfnNA8w" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/bL61sfnNA8w/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=bL61sfnNA8w" target="_blank">Hammer Pass</a></h4>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=_KsdSI880gk" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/_KsdSI880gk/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=_KsdSI880gk" target="_blank">Hammer Breakdown</a></h4>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=IX7-QEv8Nns" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/IX7-QEv8Nns/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=IX7-QEv8Nns" target="_blank">77 Action</a></h4>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=mxqEGSPXi2s" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/mxqEGSPXi2s/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=mxqEGSPXi2s" target="_blank">77 Options</a></h4>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=voTAC74NxD8&t=23s" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/voTAC74NxD8/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=voTAC74NxD8&t=23s" target="_blank">Spain PnR</a></h4>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=bReHiAwVSHA" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/bReHiAwVSHA/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=bReHiAwVSHA" target="_blank">Spain vs Zone</a></h4>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=E9FuNF7EezQ" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/E9FuNF7EezQ/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=E9FuNF7EezQ" target="_blank">Loop Action</a></h4>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=RdmSiBCPRQk" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/RdmSiBCPRQk/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=RdmSiBCPRQk" target="_blank">No Middle Defence</a></h4>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=1ZL0FXTJWvw" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/1ZL0FXTJWvw/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=1ZL0FXTJWvw" target="_blank">ICE breakdown</a></h4>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=7uo-Lpw3nTE" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/7uo-Lpw3nTE/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=7uo-Lpw3nTE" target="_blank">Gap Theory</a></h4>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=pkDz-XjbfKo" target="_blank" style="text-decoration: none;">
+          <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/pkDz-XjbfKo/hqdefault.jpg');">
+            <div class="video-thumb-play"><div class="play-icon"></div></div>
+          </div>
+        </a>
+        <div class="video-info">
+          <h4><a href="https://www.youtube.com/watch?v=pkDz-XjbfKo" target="_blank">Score against 2-3 zone</a></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <p>© 2026 <strong>Warwickshire Hawks Basketball</strong>. Developing the whole person through the game.</p>
+</footer>
+
+<script>
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+    const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabName));
+    if (activeBtn) activeBtn.classList.add('active');
+
+    const targetContent = document.getElementById('tab-' + tabName);
+    if (targetContent) targetContent.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
