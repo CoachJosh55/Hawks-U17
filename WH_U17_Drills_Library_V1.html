@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warwickshire Hawks U17 — Drills Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1A1F8C;
+  --navy-dark: #0F1260;
+  --navy-mid: #252AA0;
+  --gold: #D4A017;
+  --gold-light: #F0BB30;
+  --gold-pale: #FBF0CC;
+  --white: #ffffff;
+  --off-white: #F5F5F8;
+  --text: #1a1a2e;
+  --text-light: #5a5a7a;
+  --border: #dde0f0;
+  --accent-red: #c0392b;
+  --accent-red-light: #fdecea;
+  --accent-green: #1e6e45;
+  --accent-green-light: #e6f4ed;
+  --accent-yellow: var(--gold);
+  --accent-yellow-light: var(--gold-pale);
+  --teal: #00897b;
+  --teal-light: #e0f2f0;
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 20px;
+  --border-radius-pill: 999px;
+  --shadow-sm: 0 1px 4px rgba(26,31,140,0.10);
+  --shadow-md: 0 4px 16px rgba(26,31,140,0.12);
+  --shadow-lg: 0 8px 32px rgba(26,31,140,0.14);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Category colours */
+  --cat-finishing: #c0392b;
+  --cat-finishing-light: #fdecea;
+  --cat-shooting: #1A1F8C;
+  --cat-shooting-light: #e8eaf8;
+  --cat-passing: #00897b;
+  --cat-passing-light: #e0f2f0;
+  --cat-defence: #6d3fd1;
+  --cat-defence-light: #ede8fa;
+  --cat-ballhandling: #d4840a;
+  --cat-ballhandling-light: #fef3e2;
+  --cat-team: #1e6e45;
+  --cat-team-light: #e6f4ed;
+  --cat-warmup: #5a5a7a;
+  --cat-warmup-light: #ececf5;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--off-white);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 0;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.02) 40px,
+    rgba(255,255,255,0.02) 80px
+  );
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 56px 32px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+}
+.hero-logo {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--gold);
+  object-fit: cover;
+  box-shadow: 0 0 40px rgba(212,160,23,0.35);
+  flex-shrink: 0;
+  display: block;
+}
+.hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 900; line-height: 0.95;
+  color: var(--white); margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.hero h1 span { color: var(--gold); font-style: italic; }
+.hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.75);
+  max-width: 540px; line-height: 1.7;
+}
+.priority-banner {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 24px;
+}
+.priority-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border-radius: var(--border-radius-pill);
+  padding: 5px 14px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.priority-pill.primary { background: rgba(212,160,23,0.25); border-color: var(--gold); color: #fff; }
+.priority-pill.secondary { background: rgba(30,110,69,0.2); border-color: rgba(30,200,100,0.5); color: #fff; }
+.priority-pill.tertiary { background: rgba(192,57,43,0.2); border-color: rgba(192,57,43,0.5); color: rgba(255,255,255,0.9); }
+.hero-bar { background: var(--gold); height: 6px; }
+
+/* ── TABS ── */
+.tabs-container {
+  background: var(--navy-dark);
+  border-bottom: 2px solid var(--gold);
+  position: sticky; top: 0; z-index: 100;
+}
+.tabs {
+  display: flex; max-width: 1040px;
+  margin: 0 auto; padding: 0 16px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0; padding: 16px 16px;
+  border: none; background: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--gold-light); }
+.tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── MAIN ── */
+.main { max-width: 1040px; margin: 0 auto; padding: 40px 32px 80px; }
+.section { display: none; }
+.section.active { display: block; }
+
+/* ── SECTION HEADER ── */
+.section-header { margin-bottom: 36px; }
+.section-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.section-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 8px;
+}
+.section-header p { color: var(--text-light); font-size: 0.97rem; max-width: 700px; }
+
+/* ── INFO CALLOUT ── */
+.info-callout {
+  background: #e8eaf8;
+  border: 1px solid rgba(26,31,140,0.2);
+  border-radius: var(--border-radius-sm);
+  padding: 16px 20px;
+  margin: 0 0 28px;
+  font-size: 0.9rem; color: var(--text); line-height: 1.65;
+  border-left: 4px solid var(--navy);
+}
+.info-callout strong { color: var(--navy); }
+
+/* ── CATEGORY OVERVIEW CARDS ── */
+.category-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px; margin-bottom: 40px;
+}
+.cat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  border-top: 4px solid var(--navy);
+}
+.cat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.cat-card-icon { font-size: 1.6rem; margin-bottom: 8px; }
+.cat-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; color: var(--navy); margin-bottom: 4px;
+}
+.cat-card .count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ── DRILL CARDS ── */
+.drills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.drill-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.drill-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.drill-card-header {
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.drill-card-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0; margin-top: 2px;
+}
+.drill-card-title-block { flex: 1; min-width: 0; }
+.drill-card-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight: 700;
+  text-transform: uppercase; color: var(--navy);
+  margin-bottom: 4px; line-height: 1.2;
+}
+.drill-badges {
+  display: flex; flex-wrap: wrap; gap: 4px;
+}
+.drill-badge {
+  display: inline-flex; align-items: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: var(--border-radius-pill);
+  padding: 2px 8px;
+}
+.drill-chevron {
+  color: var(--text-light); font-size: 0.75rem;
+  transition: transform 0.2s; flex-shrink: 0;
+  margin-top: 4px;
+}
+.drill-card.open .drill-chevron { transform: rotate(90deg); }
+
+.drill-card-body {
+  display: none;
+  padding: 16px 18px;
+  flex-direction: column;
+  gap: 14px;
+}
+.drill-card.open .drill-card-body { display: flex; }
+
+.drill-description {
+  font-size: 0.88rem; color: var(--text); line-height: 1.65;
+}
+
+.drill-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.drill-meta-item {
+  background: var(--off-white);
+  border-radius: var(--border-radius-sm);
+  padding: 8px 10px;
+}
+.drill-meta-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 2px;
+}
+.drill-meta-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.88rem; font-weight: 700;
+  color: var(--navy);
+}
+
+.drill-scoring {
+  background: var(--gold-pale);
+  border: 1px solid rgba(212,160,23,0.3);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 12px;
+}
+.drill-scoring-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 5px;
+}
+.drill-scoring-text {
+  font-size: 0.83rem; color: var(--text); line-height: 1.55;
+}
+
+.drill-pattern {
+  background: #e8eaf8;
+  border: 1px solid rgba(26,31,140,0.15);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 12px;
+  border-left: 3px solid var(--navy);
+}
+.drill-pattern-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 5px;
+}
+.drill-pattern-text {
+  font-size: 0.83rem; color: var(--text); line-height: 1.6;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ── CATEGORY BADGE COLOURS ── */
+.badge-finishing { background: var(--cat-finishing-light); color: var(--cat-finishing); }
+.badge-shooting  { background: var(--cat-shooting-light); color: var(--cat-shooting); }
+.badge-passing   { background: var(--cat-passing-light); color: var(--cat-passing); }
+.badge-defence   { background: var(--cat-defence-light); color: var(--cat-defence); }
+.badge-ballhandling { background: var(--cat-ballhandling-light); color: var(--cat-ballhandling); }
+.badge-team      { background: var(--cat-team-light); color: var(--cat-team); }
+.badge-warmup    { background: var(--cat-warmup-light); color: var(--cat-warmup); }
+
+.icon-finishing  { background: var(--cat-finishing-light); }
+.icon-shooting   { background: var(--cat-shooting-light); }
+.icon-passing    { background: var(--cat-passing-light); }
+.icon-defence    { background: var(--cat-defence-light); }
+.icon-ballhandling { background: var(--cat-ballhandling-light); }
+.icon-team       { background: var(--cat-team-light); }
+.icon-warmup     { background: var(--cat-warmup-light); }
+
+/* Category top border colours */
+.drill-card[data-primary="finishing"] { border-top: 4px solid var(--cat-finishing); }
+.drill-card[data-primary="shooting"]  { border-top: 4px solid var(--cat-shooting); }
+.drill-card[data-primary="passing"]   { border-top: 4px solid var(--cat-passing); }
+.drill-card[data-primary="defence"]   { border-top: 4px solid var(--cat-defence); }
+.drill-card[data-primary="ballhandling"] { border-top: 4px solid var(--cat-ballhandling); }
+.drill-card[data-primary="team"]      { border-top: 4px solid var(--cat-team); }
+.drill-card[data-primary="warmup"]    { border-top: 4px solid var(--cat-warmup); }
+
+/* cat-card border colours */
+.cat-card[data-cat="finishing"] { border-top-color: var(--cat-finishing); }
+.cat-card[data-cat="shooting"]  { border-top-color: var(--cat-shooting); }
+.cat-card[data-cat="passing"]   { border-top-color: var(--cat-passing); }
+.cat-card[data-cat="defence"]   { border-top-color: var(--cat-defence); }
+.cat-card[data-cat="ballhandling"] { border-top-color: var(--cat-ballhandling); }
+.cat-card[data-cat="team"]      { border-top-color: var(--cat-team); }
+.cat-card[data-cat="warmup"]    { border-top-color: var(--cat-warmup); }
+
+/* ── SEARCH ── */
+.search-bar {
+  display: flex; gap: 10px; align-items: center;
+  margin-bottom: 28px;
+}
+.search-input {
+  flex: 1;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 14px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-input:focus { border-color: var(--navy); }
+.search-input::placeholder { color: var(--text-light); }
+
+.filter-pills {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;
+}
+.filter-pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border-radius: var(--border-radius-pill);
+  padding: 5px 14px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.filter-pill:hover { border-color: var(--navy); color: var(--navy); }
+.filter-pill.active {
+  background: var(--navy); border-color: var(--navy); color: var(--white);
+}
+.filter-pill[data-filter="finishing"].active { background: var(--cat-finishing); border-color: var(--cat-finishing); }
+.filter-pill[data-filter="shooting"].active  { background: var(--cat-shooting); border-color: var(--cat-shooting); }
+.filter-pill[data-filter="passing"].active   { background: var(--cat-passing); border-color: var(--cat-passing); }
+.filter-pill[data-filter="defence"].active   { background: var(--cat-defence); border-color: var(--cat-defence); }
+.filter-pill[data-filter="ballhandling"].active { background: var(--cat-ballhandling); border-color: var(--cat-ballhandling); }
+.filter-pill[data-filter="team"].active      { background: var(--cat-team); border-color: var(--cat-team); }
+.filter-pill[data-filter="warmup"].active    { background: var(--cat-warmup); border-color: var(--cat-warmup); }
+
+/* ── SESSION STRUCTURE ── */
+.session-phase {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.session-phase-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+.session-phase-header:hover { background: var(--off-white); }
+.phase-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--navy); color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.session-phase-title {
+  flex: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight: 700;
+  text-transform: uppercase; color: var(--navy);
+}
+.session-phase-sub {
+  font-size: 0.82rem; color: var(--text-light);
+  font-family: 'Barlow', sans-serif; font-weight: 400;
+  text-transform: none; margin-top: 2px;
+}
+.session-chevron { color: var(--text-light); transition: transform 0.2s; }
+.session-phase.open .session-chevron { transform: rotate(90deg); }
+.session-phase-body {
+  display: none; padding: 16px 20px 20px;
+  border-top: 1px solid var(--border);
+}
+.session-phase.open .session-phase-body { display: block; }
+.session-phase-body p { font-size: 0.9rem; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+.session-phase-body p:last-child { margin-bottom: 0; }
+.session-phase-body ul { padding-left: 18px; }
+.session-phase-body ul li { font-size: 0.9rem; color: var(--text); line-height: 1.7; }
+.session-rule {
+  background: var(--gold-pale);
+  border: 1px solid rgba(212,160,23,0.35);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85rem; color: var(--text);
+  margin-top: 12px;
+}
+.session-rule strong { color: var(--navy); }
+
+/* no results */
+.no-results {
+  text-align: center; padding: 60px 20px; color: var(--text-light);
+}
+.no-results h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 8px;
+}
+
+/* result count */
+.result-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 16px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy-dark);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 32px;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+  .hero-logo { width: 80px; height: 80px; }
+  .main { padding: 28px 18px 60px; }
+  .drills-grid { grid-template-columns: 1fr; }
+  .drill-meta { grid-template-columns: 1fr; }
+  .category-overview { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Warwickshire Hawks · U17 · 2026/27</div>
+      <h1>Drills <span>Library</span></h1>
+      <p class="hero-sub">Complete coaching reference for all V10 drills — searchable, filterable, and colour-coded by category. Built for courtside use.</p>
+      <div class="priority-banner">
+        <span class="priority-pill primary">🏀 44 Drills</span>
+        <span class="priority-pill secondary">7 Categories</span>
+        <span class="priority-pill tertiary">Green Eggs System</span>
+      </div>
+    </div>
+    <img class="hero-logo"
+      src="https://resources.warwickshirehawks.co.uk/images/Logo.png"
+      onerror="this.style.display='none'"
+      alt="Warwickshire Hawks logo">
+  </div>
+  <div class="hero-bar"></div>
+</div>
+
+<!-- ── TABS ── -->
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('all', this)" data-tab="all">All Drills</button>
+    <button class="tab-btn" onclick="showTab('finishing', this)" data-tab="finishing">🔴 Finishing</button>
+    <button class="tab-btn" onclick="showTab('shooting', this)" data-tab="shooting">🔵 Shooting</button>
+    <button class="tab-btn" onclick="showTab('passing', this)" data-tab="passing">🟢 Passing</button>
+    <button class="tab-btn" onclick="showTab('defence', this)" data-tab="defence">🟣 Defence</button>
+    <button class="tab-btn" onclick="showTab('ballhandling', this)" data-tab="ballhandling">🟠 Ball Handling</button>
+    <button class="tab-btn" onclick="showTab('team', this)" data-tab="team">🟩 Team Concepts</button>
+    <button class="tab-btn" onclick="showTab('warmup', this)" data-tab="warmup">⚪ Warmups</button>
+    <button class="tab-btn" onclick="showTab('session', this)" data-tab="session">📋 Session Structure</button>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- ══════════════════════════════════════ ALL DRILLS ══════════════════════════════════════ -->
+  <div class="section active" id="tab-all">
+    <div class="section-header">
+      <div class="section-eyebrow">V10 Drills List · 2026/27</div>
+      <h2>All <span style="color:var(--gold)">Drills</span></h2>
+      <p>Search or filter by category. Tap any drill to expand the full description, scoring system, and coaching notes.</p>
+    </div>
+
+    <div class="info-callout">
+      <strong>Coaching rules:</strong> Drills are <strong>make it take it</strong> unless stated. Presume <strong>3 dribble max</strong>. <strong>Wherever possible, make drills competitive against live defence.</strong> The gym must be loud — shout the score, defensive coverages, trash talk. High five or spud after every rep. Pick each other up. Clap them home.
+    </div>
+
+    <!-- Overview cards -->
+    <div class="category-overview">
+      <button class="cat-card" data-cat="finishing" onclick="activateCatFilter('finishing')">
+        <div class="cat-card-icon">🔴</div>
+        <h3>Finishing</h3>
+        <div class="count">8 Drills</div>
+      </button>
+      <button class="cat-card" data-cat="shooting" onclick="activateCatFilter('shooting')">
+        <div class="cat-card-icon">🔵</div>
+        <h3>Shooting</h3>
+        <div class="count">8 Drills</div>
+      </button>
+      <button class="cat-card" data-cat="passing" onclick="activateCatFilter('passing')">
+        <div class="cat-card-icon">🟢</div>
+        <h3>Passing</h3>
+        <div class="count">5 Drills</div>
+      </button>
+      <button class="cat-card" data-cat="defence" onclick="activateCatFilter('defence')">
+        <div class="cat-card-icon">🟣</div>
+        <h3>Defence</h3>
+        <div class="count">7 Drills</div>
+      </button>
+      <button class="cat-card" data-cat="ballhandling" onclick="activateCatFilter('ballhandling')">
+        <div class="cat-card-icon">🟠</div>
+        <h3>Ball Handling</h3>
+        <div class="count">5 Drills</div>
+      </button>
+      <button class="cat-card" data-cat="team" onclick="activateCatFilter('team')">
+        <div class="cat-card-icon">🟩</div>
+        <h3>Team Concepts</h3>
+        <div class="count">7 Drills</div>
+      </button>
+      <button class="cat-card" data-cat="warmup" onclick="activateCatFilter('warmup')">
+        <div class="cat-card-icon">⚪</div>
+        <h3>Warmups</h3>
+        <div class="count">4 Drills</div>
+      </button>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input class="search-input" type="text" placeholder="Search drills by name or keyword…" id="search-input" oninput="filterDrills()">
+    </div>
+
+    <!-- Filter pills -->
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all" onclick="setFilter('all', this)">All</button>
+      <button class="filter-pill" data-filter="finishing" onclick="setFilter('finishing', this)">🔴 Finishing</button>
+      <button class="filter-pill" data-filter="shooting" onclick="setFilter('shooting', this)">🔵 Shooting</button>
+      <button class="filter-pill" data-filter="passing" onclick="setFilter('passing', this)">🟢 Passing</button>
+      <button class="filter-pill" data-filter="defence" onclick="setFilter('defence', this)">🟣 Defence</button>
+      <button class="filter-pill" data-filter="ballhandling" onclick="setFilter('ballhandling', this)">🟠 Ball Handling</button>
+      <button class="filter-pill" data-filter="team" onclick="setFilter('team', this)">🟩 Team Concepts</button>
+      <button class="filter-pill" data-filter="warmup" onclick="setFilter('warmup', this)">⚪ Warmups</button>
+    </div>
+
+    <div class="result-count" id="result-count">Showing 44 drills</div>
+
+    <!-- ── DRILLS GRID ── -->
+    <div class="drills-grid" id="drills-grid">
+
+      <!-- ═══════════════ FINISHING ═══════════════ -->
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing" data-name="3 Man Lays">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">🏀</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">3 Man Lays</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+              <span class="drill-badge badge-passing">Passing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into teams of 5. 3 cones (blocks and basket). 30 seconds to make the highest score. Place 2 men in jail spaced 45° back from the blocks — unlock with a physical touch (high-five or spud) who then runs onto the pass. No dribbles. Coach with a blocking pad to contest layups.</div>
+          <div class="drill-pattern">
+            <div class="drill-pattern-label">Pattern</div>
+            <div class="drill-pattern-text">Basket → Pass → Unlock → Cut → Layup → Unlock → Rebound → Repeat</div>
+          </div>
+          <div class="drill-meta">
+            <div class="drill-meta-item"><div class="drill-meta-label">Format</div><div class="drill-meta-value">Teams of 5</div></div>
+            <div class="drill-meta-item"><div class="drill-meta-label">Timer</div><div class="drill-meta-value">30 sec</div></div>
+          </div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint make = 3 pts · Shy-away make = 1 pt · Every coach block = 5 pts. Team scores.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing" data-name="60 Layups">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">💥</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">60 Layups</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Offensive team and defensive team — stay on same team. Offense at NBA wing each with ball. Defence at opposite block. Coach at elbow passes for a cut and finish. New O and D player each rep. Either catch off run and finish, or 1 dribble allowed. Play off 2 feet. Defence must rotate and wall up.</div>
+          <div class="drill-meta">
+            <div class="drill-meta-item"><div class="drill-meta-label">Timer</div><div class="drill-meta-value">1 min</div></div>
+            <div class="drill-meta-item"><div class="drill-meta-label">Goal</div><div class="drill-meta-value">60 pts</div></div>
+          </div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint make = 5 pts · Outside paint = 1 pt · Defence stop = 6 pts · Block = 10 pts. Team scores.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing defence" data-name="2v1 off 2 feet">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">✌️</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">2v1 off 2 Feet</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">3 lines under basket, defender in middle. Pass to coach at FTL and coach decides who to pass to for a 2-foot power finish. Whole group out, 1 shot only, 1 pass only. Defender must wall up in cylinder to avoid fouling. Progress to elbow catch for a rip-thru drive.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint make = 5 pts · Outside paint = 1 pt · Block ends the drill. Whole team score.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing ballhandling" data-name="Cone Work">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">🏁</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Cone Work</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Must use traffic cones so players can pick up. Players start on wing, corner or top with ball. Coach plays static defence in a stance (shade 1 side) with a traffic cone behind him. Player executes a dribble move (BTB, BTL or push cross) and blows by. Player MUST pick up traffic cone with weak hand and get to basket for a finish. Cone pickup forces shoulder dip — essential for blowing by defenders and avoiding a wide driving angle. 2nd coach under basket with blocking pad.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">No cone pickup = no score · Paint make = 5 pts · Smile make = 10 pts · Target: 100 pts.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing" data-name="Full Court Layup Race">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">🏃</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Full Court Layup Race</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">4 teams (O/D) on both baselines, queue at each paint line. 2 players racing to other basket for a layup or stop. Offensive player has 2 balls — dribble both to halfcourt, then 1 ball in frontcourt (hold 2nd under arm). Defensive player can go once they pass FTL. Can finish with either hand on either side. Both sides going at the same time.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Steal = 5 pts · Made layup = 10 pts · Target: 50 pts.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing ballhandling" data-name="Under Basket Footwork">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">🦶</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Under Basket Footwork</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Pivot and protect. Back to coach underneath basket. Receive pass from coach at top, pivot away from coach on back and rise for a hook.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Team vs Coach · Every score = 5 pts · Every coach block = 5 pts.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing defence" data-name="1v1 Catch and Rip">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">⚡</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">1v1 Catch and Rip</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Wing-to-wing skip pass to coach, cut to middle for live 1v1. Teach swim and seal before catch. 7 seconds to score. 2 dribbles max — can pass back to coach and relocate.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint make = 5 pts · Midrange = 1 pt · 3pt = 10 pts · Steal = 10 pts · Shot clock violation ends the drill. Individual scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="finishing" data-cats="finishing defence" data-name="Stick n Square 1v1">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-finishing">🔒</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Stick n Square 1v1</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-finishing">Finishing</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Pairs, rock paper scissors for A/B. Player A with ball, Player B defending on hip (aggressive). Player A plants lead foot between Player B's legs and pushes off with a retreat dribble. Square up to Player B with hips and chest, 1 hard dribble and blow by. Either get to a paint finish or a pull up. Swap every 3 possessions.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint finish = 10 pts · Pull up = 5 pts · Steal = 10 pts · Block ends the drill · Target: 50 pts.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════ SHOOTING ═══════════════ -->
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting" data-name="KD Form Shooting">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🎯</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">KD Form Shooting</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">DL shooting — players try to get their bodies off balance or into a weird position before shooting. Sequences: RDL, 1-foot hop, 1-foot hop into dribble and set feet, header into set feet, spin 360 into set feet, pound dribble into squat, throw ball up and do a sit-up before shooting, get creative. Alter release height — must shoot to the moon.</div>
+          <div class="drill-meta">
+            <div class="drill-meta-item"><div class="drill-meta-label">Use as</div><div class="drill-meta-value">Intro drill</div></div>
+            <div class="drill-meta-item"><div class="drill-meta-label">Focus</div><div class="drill-meta-value">Off-balance release</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting defence" data-name="Corner 2 Corner">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">📐</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Corner 2 Corner</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into trios. 1 minute — 2 rebounders with 2 balls. Player sprints along baseline from corner to corner looking to catch and shoot in deep corner. Rotate shooter after 1 minute. Highest score wins.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">3pt make = 10 pts · Target: 100 pts — if achieved drill ends.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting defence" data-name="Corner Chase">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🏹</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Corner Chase</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">3 equal teams: Shooters, Screeners, Defenders. Shooters start at NBA wing. Screeners start in no-man's land. Defender starts in gap between coach (top) and shooter. Pass from wing to top, screener sets a legal screen shading towards corner. Cut off screen to corner for contested 3. Start with shooting only, then add pump into sidestep. If open, let the ball fly.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">3pt make = 5 pts · Pump and sidestep = 3 pts · Stop = 5 pts · Block ends the drill · Target: 25 pts. O/D team scores.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting team" data-name="Grinch">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🎄</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Grinch</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-team">System</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">5-spot shooting — system shots only: Layup, WS corner 3, SS corner 3, Elbow 2, Wing 3. Split into teams of 5, 3 from another team act as baseline extra passers. Teams of 5 go on and off together in Green Eggs spacing. PG passes to Pinch Post and cuts for layup → WS corner 3 → SS corner 3 → Elbow 2 → WS Wing 3. Go until goal is achieved or 10 mins.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Team Goals per trip</div>
+            <div class="drill-scoring-text">4 makes = at least once · 3 makes = at least twice · 2 makes = at least thrice · 1 make = at least four times. Higher goals stack down if repeated.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting team" data-name="Mini Grinch">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🌿</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Mini Grinch</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-team">System</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into trios: elbow player, wing player, opposite corner player. 2 defenders — 1 on the nail, 1 under basket. 1 static defender calling from behind baseline. Wing player sprints to collect ball from coach at halfcourt. Defender picks up whoever they like. Wing initiates through the wing with a skip pass or high-post entry. Looking for a cut and score. 3 possessions to set a score, then swap — 2nd team wins if they beat it.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Corner 3 = 30 pts · Any other 3 = 10 pts · Any layup = 20 pts · Midrange = 1 pt.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting defence" data-name="Shooter Showdown">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🎰</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Shooter Showdown</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">2 players, 1 ball each. 6 cones lined up behind with a tennis ball in the middle. Each make (elbow jumpers) moves the tennis ball to the closer cone. First to push the ball to their end cone wins. Can also play tic-tac-toe, or split into equal teams. Rotate people on each hoop.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting defence" data-name="2v1 Shooting">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🎯</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">2v1 Shooting</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Offense and defence groups — stay on until target score is met. 2 shooters at corner and wing (Green Eggs spacing). Dedicated passer (3 possessions) at opposite elbow starts with ball. Defender in cover 2 help — 1 foot on paint line. Elbow passes to either shooter, defender closes out. Shooters allowed 1 pass. No pump fakes to start.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Wing 3 = 10 pts · Corner 3 = 20 pts · Steals and blocks = 15 pts · Target: 50 pts. Team scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting" data-name="3v2 Shooting">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🔢</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">3v2 Shooting</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">O and D teams. 3 offensive players spaced around 3pt line. 2 defenders start at elbows. 2 balls start with defenders and are passed out to offensive players. No dribbling allowed. Offensive players can swap spots. 2 defenders must close out, recover, rebound, and pass back. 45 seconds to score as many as possible. After all players have played, swap O/D.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">3pt make = 5 pts · Stop = 5 pts · Steal = 10 pts. O/D team scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════ PASSING ═══════════════ -->
+
+      <div class="drill-card" data-primary="passing" data-cats="passing" data-name="Rip Thru Into Reverse Pivot Pass">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-passing">↩️</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Rip Thru into Reverse Pivot Pass</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-passing">Passing</span>
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Pairs line up opposite each other across the whole court. Player A rips thru and drives towards Player B — the rip thru is the trigger for Player B to relocate to Player A's original position. Player A jumpstops and reverse pivots. Pass series: one-handed, over the top, top fake bounce pass.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="passing" data-cats="passing warmup" data-name="Seated Passing Race">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-passing">🏃</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Seated Passing Race</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-passing">Passing</span>
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split group into 2 teams sat in single file line facing each other (in pairs, touching shoes) along paint lines. 1 ball per team. 5 passes between each pair before pass over the top to next pair and relocate to front of sitting line. Race to other baseline, piggy back race back. Touch passes are important, counting out loud is important — if ball touches floor start that pair's count again. Use medicine ball to make harder.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="passing" data-cats="passing" data-name="4v3 Around Key">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-passing">🔄</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">4v3 Around Key</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-passing">Passing</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">O and D teams. 4 offensive players play hot potato (blocks and elbows), no dribbles allowed. Goal is to complete 20 passes — players count out loud. If defence tips a pass they get a point — their goal is 3 tipped passes. Ball in the air, feet in the air. Once goal is complete the ball is live for a single score or stop. 10-second timer.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="passing" data-cats="passing" data-name="2 Dribbles Pass">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-passing">🎾</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">2 Dribbles Pass</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-passing">Passing</span>
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">4 players (wings and corners, matching bibs in pairs) pass between each other. Wings take 2 dribbles to elbow (must touch paint) and kick out to opposite corner. Corner releases to near-side wing, repeat. Follow your pass to fill spots. Goal is 10 paint touches in 30 seconds. After goal or time runs out it turns into live 2v2. 10-second timer. Make it take it.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="passing" data-cats="passing" data-name="Dribble Race 1v2">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-passing">🎳</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Dribble Race 1v2</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-passing">Passing</span>
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into 4 teams. Line up in the corners with 1 ball per line. Players dribble around a defender at the elbow and sprint to a defender between the 3pt line and halfcourt. Must dribble around and back to elbow defender and fire a pass to the original corner. Options: 1-handed pass off dribble, jumpstop/fake/overhead pass, or weak hand only. No chest passes. Zip the pass — elbow and wrist lock out as you step towards target. Defenders can't slide but can steal.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Steal = 10 pts · Completed pass = 5 pts · Target: 50 pts. O/D team scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════ DEFENCE ═══════════════ -->
+
+      <div class="drill-card" data-primary="defence" data-cats="defence" data-name="Basic Shell">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-defence">🛡️</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Basic Shell</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-defence">Defence</span>
+              <span class="drill-badge badge-team">System</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Start 3v3, space along wing and deep corner. Pass around offensive players and defenders move on a string. Build up to 5v5. Someone must cover Home and the Nail. Cover 2 guy is never the Home guy. Teach effective steps in and out of key to avoid 3-second violations.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="defence" data-cats="defence" data-name="Man in the Hole">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-defence">🕳️</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Man in the Hole</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Defender is full-court pressing 1 ball handler. Shrink court to thirds and force ball handler to zig-zag. For every change of direction the ball handler makes, the defender gets a point. Guys on the side call out points. Defender plays 3 consecutive possessions up and down the floor. New ball handler every time. Defender must slide, or turn hips and sprint to recover.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="defence" data-cats="defence" data-name="1v1 Closeout">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-defence">💨</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">1v1 Closeout</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-defence">Defence</span>
+              <span class="drill-badge badge-shooting">Shooting</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">O and D teams. Coach at Nail. Players paired up. Player A in deep corner (or wing), Player B on weakside block. Player B passes to coach and sprints to close out the corner. Coach passes to Player A for a shot or drive. Defender closes out chest first, legs wide and choppy feet. Arm up on the shot — don't leave feet. If they drive, force baseline and use a low active hand (reach upwards, not downwards to avoid fouls). Offense gets corner and wing before teams swap.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint make = 10 pts · 3pt make = 5 pts · Midrange = 1 pt · Steal = 15 pts · Block = 10 pts. O/D team scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="defence" data-cats="defence" data-name="1v1 No Arms">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-defence">🙅</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">1v1 No Arms</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Defender starts on the nail (or block). Offensive player starts at either top, wing or corner. Defensive player plays 3 consecutive possessions. Must hold a basketball (or medicine ball) above head the entire time. Aim to slide and keep offensive player out of paint. Every shot outside paint that isn't a 3 is a point for the defender. First to 3 points wins.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="defence" data-cats="defence" data-name="Dusty 1v1">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-defence">💥</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Dusty 1v1</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-defence">Defence</span>
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into groups of 4. 1 defender at FTL, 2 bystanders at elbows, 1 offensive player with ball at top. Defender taps either elbow player to trigger offense to attack. 1 dribble allowed — can pass to either elbow to reset. Make it take it, rotate: defence to elbow, elbow to offence.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint finish = 5 pts · 3pt shot = 3 pts · Stop = 5 pts · Target: 15 pts. Individual scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="defence" data-cats="defence" data-name="Pistol Pete Closeout">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-defence">🔫</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Pistol Pete Closeout</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-defence">Defence</span>
+              <span class="drill-badge badge-shooting">Shooting</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Player A holds ball behind head and rolls off back. Player B closes out after ball is released. Player A wraps ball around back, sets feet and shoots. 3 shots then swap.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="defence" data-cats="defence" data-name="No Dribble 1v1">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-defence">🚫</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">No Dribble 1v1</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-defence">Defence</span>
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Players in pairs start with touch passes until offensive player changes direction and speed to trigger live 1v1. No dribbles allowed — will travel. Emphasise creativity of movement and focus on finishing. 30 seconds, stay on O/D. Highest score wins.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint score = 10 pts · 3pt = 5 pts · Midrange = 1 pt · Defensive stop = 5 pts.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════ BALL HANDLING ═══════════════ -->
+
+      <div class="drill-card" data-primary="ballhandling" data-cats="ballhandling defence" data-name="Defensive Posture with Lunge Walks">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-ballhandling">🦵</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Defensive Posture w/ Lunge Walks</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Pairs with 2 balls each. Defender = zig-zag slide. Offensive player = lunge walk (whilst dribbling) from baseline to halfcourt, whilst rolling ball along floor. Go slow, master footwork. Can make it harder with a tennis or rugby ball. At halfcourt triggers live 1v1 going back. Multiple pairs at once to create chaos.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="ballhandling" data-cats="ballhandling" data-name="Paired Resistance">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-ballhandling">💪</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Paired Resistance</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Players pair up and line up facing each other on the baseline. Player A (behind baseline) starts with ball. Player B places both hands on Player A's shoulders and pushes against them. Player A dribbles on the spot, using body to push against Player B. After 5 dribbles Player B disengages for Player A to sprint-dribble to halfcourt, jumpstop, pivot and back. Swap after each rep. 2 minutes. Best ball handlers use 2 balls.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="ballhandling" data-cats="ballhandling" data-name="Clam em Home DHO">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-ballhandling">🤝</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">1v1 Around NBA Wing Cone (DHO)</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">2 queues at the lane lines. Dribble around NBA wing cone for DHO, live after exchange. Emphasise attacking straight away.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Paint make = 5 pts · Midrange = 1 pt · 3pt = 10 pts · Steal = 10 pts · Target: 50 pts. Individual scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="ballhandling" data-cats="ballhandling finishing" data-name="Rip">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-ballhandling">💨</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Rip (Time Trial)</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Single player time trial — hustle and footwork to never give up 50/50 balls. Coach lines up 6 balls on the floor (start around key, then out to corner, then out to wing). Player chooses any order to go and pick them up and attack the basket. Don't care about makes — care about footwork (no travels) and hustle. Eliminate wasted movement. Never stop the time trial. Coach and correct player afterwards. Film and show player straight away if possible.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="ballhandling" data-cats="ballhandling" data-name="Cone Mates">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-ballhandling">🔵</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Cone Mates</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Traffic cones with a flat cone next to them up the paint lines (both sides). Players dribble past the cones placing the flat cone on top of the traffic cone, touch the halfway line, then return for a layup. Player behind follows and returns the flat cone to the floor. Alternate dribbling hand each time.</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════ TEAM CONCEPTS ═══════════════ -->
+
+      <div class="drill-card" data-primary="team" data-cats="team" data-name="2v1 Situationals">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">🦅</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">2v1 Situationals</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Separate group into Hawks &amp; Foxes, Cobras &amp; Bears, Badgers. On one half: Option A (Pinch Post) with Hawks &amp; Foxes. Hawk brings ball up from fullcourt run-up, Fox finds the elbow for a pin and seal. Other half: Option B (Hammer) with Cobras &amp; Bears. Cobra starts at halfcourt, passes to coach at elbow, then plays tag/chase with their defender. Catches the eyes of Bear who sets a solid screen. Cobra sprints to corner for 3. Badgers/dev group run individual skills before joining a 2v1. Progress to 2v2, or 3v2 as weeks go on.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="team" data-cats="team shooting" data-name="Creighton Transition">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">⚡</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Creighton Transition</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">5v5. Offense on baseline, Defense along FTLE facing offense with numbers (1, 2 or 3). 1 is at the nail, 2s at elbows, 3s FTLE nearly at sideline. Coach calls a number — those players must touch the baseline before getting back on defence. Coach passes to any offensive player who attacks. Offense has 12 seconds to score. Defence must force ball to a side third and contain it. Late defenders recover to weakside. Defence: stop ball, cover Home, find the Nail (to close to a wing). Force a skip pass to the corner so we can trap.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="team" data-cats="team" data-name="Whistle Drill">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">📯</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Whistle Drill</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">5v5 half court. Teams space and run offensive pattern (not trying to score, just work the defence — if gap opens take it and kick out). Coach blows whistle and whoever has the ball must place it on the floor. Teams swap offense and defence and change matchups — the player guarding the ball cannot pick the ball up and continue.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="team" data-cats="team" data-name="3v3 Continuous">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">🔁</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">3v3 Continuous</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into fair teams. Each team runs basic Green Eggs spacing, focused on a different option. Make it take it, 10-minute running clock.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="team" data-cats="team shooting" data-name="Cone Fastbreak Spacing">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">🏎️</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Cone Fastbreak Spacing</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+              <span class="drill-badge badge-finishing">Finishing</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into teams of 5. Setup cones in 5 Green Eggs spots. Coach throws ball off backboard for a live ball rebound/inbounds. Players sprint to their spots — coach times and quickest into all 5 spots wins. Progress to add quickest into quick action score (Pinch Post layup or Hammer screen).</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="team" data-cats="team shooting defence" data-name="Get Action Corner to Wing">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">📐</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Get Action Corner to Wing</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+              <span class="drill-badge badge-shooting">Shooting</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">O and D teams — defence given explicit instruction beforehand (ask players to discuss tactic). Offense in corner, coach at FTLE. Defenders execute tactic. Offense passes to coach for a Get action and looks for a 3. Read the defender — if needed flare off, pump fake and sidestep. Floor is lava — no inside 3 catches or dribbles. Offense has 1 shot each. Talk to each other to figure out coverage. Then swap and total score wins.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Score each possession 1 point for O or D. Swap and total wins.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="team" data-cats="team shooting" data-name="Home">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">🏠</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Home</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+              <span class="drill-badge badge-shooting">Shooting</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Drill the safety valve and corner shooter sprinting Home after every shot to eliminate fast break layups. Player starts on wing and top. Coach starts at weakside elbow. Wing swings to top. Top entry pass to elbow. Wing sprints to corner, top drifts to FTLE. Coach pass to corner for 3. On release both players race to Home. 1st player to Home wins a point.</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════ WARMUPS ═══════════════ -->
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Piano Warmup">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🎹</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Piano Warmup</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Dribble ball on finger pads only. Use one finger at a time, work down then up fingers one by one. Ball should bounce extremely low to develop touch. 30 seconds per hand. Machine gun finish with both hands. Should take no longer than 2 minutes.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Pool Noodle Tag">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🌊</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Pool Noodle Tag</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Players line up around center circle and given a number — 2 players share each number (1s, 2s, 3s…7s). Coach holds 2 pool noodles. Players stutter-step, slide or step out-then-in around the circle. Coach calls a number — those 2 sprint to catch a noodle while everyone else escapes. Hitting someone tags them out. Escaping = getting behind a baseline. Sideline is not out. Go until a winning pair.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Slalom Sprinting">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🏃</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Slalom Sprinting</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Split into Team A and B. Teams line up along baseline with 6ft between each person. Sprint between teammates in a slalom from left corner. When player gets to right corner they sprint to the middle to catch a slammed ball from coach. Each time ball bounces before player catches = 1 point. Fewest points wins. Teammates constantly clapping.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Tag-Team Slalom Race">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🔗</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Tag-Team Slalom Race</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Pair up and split into even teams of 3 pairs. Cones in zig-zag slalom. Pairs must lock arms and carry a rolled-up bib (or cone) whilst racing around cones. After slalom, pair hands object to next pair. Quickest team wins.</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════ BONUS / MULTI-CAT ═══════════════ -->
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting team" data-name="Paint to Corner">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">🎯</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Paint to Corner</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-team">System</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">NBA wing line, coach at opposite elbow. Player A passes to coach and cuts to corner. Coach passes from Pinch Post to corner for a drive (must touch paint). Player B (next in line) cuts from wing to corner once drive starts. Player A pivots and kicks back to corner for 3. After kick-out Player A closes out to contest. 1-minute timer. Whole team score.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">3pt make = 10 pts · Pump and sidestep = 5 pts · Target: 75 pts.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting defence" data-name="Circle Chase">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">⭕</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Circle Chase</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Paired players. Cones at wing, corner, and top. Start on baseline, pass to teammate at wing. Player A sprints to wing cone and jogs around it in a circle (up to them how many times), then sprints to either wing or corner cone for a catch-and-shoot 3.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">3pt make = 10 pts · Steals and blocks = 5 pts · Target: 50 pts. Individual scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="shooting" data-cats="shooting defence" data-name="Baseline to Corner">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-shooting">📍</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Baseline to Corner</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-shooting">Shooting</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Pair up behind baseline. Offense passes to coach at top and curls quickly (sprint 2 steps into backpedal) around short-corner cone to achieve a deep corner 3. Defender has their own cone to curl around and contest.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Back2Back">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🫂</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Back2Back</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Players pair up with 1 ball. Racing sideline to sideline whilst holding ball between each other's backs. Not allowed to touch ball with hands or arms. Rhythm count for steps helps. Equal pressure into each other keeps ball in position. Ball drops = restart at nearest sideline. First to 3 successful trips wins.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Rebounding Smash">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">💥</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Rebounding Smash</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Players pair up with 1 ball. Racing sideline to sideline. Player A smashes ball off floor so it bounces high. Player B must locate ball with eyes, jump with 2 hands up, catch ball and land on 2 feet. First team to cross original sideline wins.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Over Under Race">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🏋️</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Over Under Race</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">2 teams, single file on baseline paint lines. Ball starts at top — pass either over head or under legs (American football style). When ball reaches last player, everyone turns and repeats back. After passing, sprint to front of line. Race up and back — if ball hits floor, start again. On the back trip: crawl, or press-up bridge crawl in line.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Clap Match">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">👏</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Clap Match</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Players in centre circle must match a coach's ball bounce with a clap. Coach is free to fake or bounce multiple times. Clap at the wrong time = you're out.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Basket-Football">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">⚽</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Basket-Football</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+              <span class="drill-badge badge-ballhandling">Ball Handling</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">5v5 football but every player is dribbling a basketball. Football goal setup on each end. 4 minutes on the clock. Highest score wins. If more numbers (15+) then only 2 minutes and sub in new team.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Smile layup = 10 pts · Any jumpshot = 5 pts · Target: 50 pts. Team scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="5v5 with Yoga Ball">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🎱</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">5v5 w/ Yoga Ball</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">5v5 full court played with a big yoga ball. Points scored for touching the basket. No dribbles.</div>
+          <div class="drill-scoring">
+            <div class="drill-scoring-label">Scoring</div>
+            <div class="drill-scoring-text">Smile layup = 10 pts · Any jumpshot = 5 pts · Target: 50 pts. Team scoring.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="team" data-cats="team" data-name="5v5 Full Court">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-team">🏀</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">5v5 Full Court</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-team">System</span>
+              <span class="drill-badge badge-defence">Defence</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Offense can freestyle until it looks ugly. Guide teams to play no-middle and force to side thirds. Teams who use ICE/WEAK ball screens, recover and/or WOLF stay on. 10-minute running clock.</div>
+        </div>
+      </div>
+
+      <div class="drill-card" data-primary="warmup" data-cats="warmup" data-name="Trio Keepy Up">
+        <div class="drill-card-header" onclick="toggleDrill(this.parentElement)">
+          <div class="drill-card-icon icon-warmup">🤹</div>
+          <div class="drill-card-title-block">
+            <div class="drill-card-name">Trio Keepy Up</div>
+            <div class="drill-badges">
+              <span class="drill-badge badge-warmup">Warmup</span>
+            </div>
+          </div>
+          <span class="drill-chevron">▶</span>
+        </div>
+        <div class="drill-card-body">
+          <div class="drill-description">Trios with 3 balls at opposite baselines. 1 ball must be kept in the air with 3 individual keep-ups (players holding the other 2 balls), before being passed to another player holding a ball. After doing keep-ups, pass your ball to the only player without one. Goal is to score on the opposite basket and return to centre circle.</div>
+        </div>
+      </div>
+
+    </div><!-- end drills-grid -->
+
+    <div class="no-results" id="no-results" style="display:none">
+      <h3>No Drills Found</h3>
+      <p>Try a different search or filter.</p>
+    </div>
+
+  </div><!-- end #tab-all -->
+
+  <!-- ══ CATEGORY TABS (simplified redirects) ══ -->
+  <div class="section" id="tab-finishing">
+    <div class="section-header">
+      <div class="section-eyebrow">Category · Intro Drill: 3 Man Lays</div>
+      <h2>🔴 Finishing</h2>
+      <p>Layup finishes, power finishes, off-balance scoring, and 1v1 attacking. Use <strong>3 Man Lays</strong> as your intro whenever selecting from this category.</p>
+    </div>
+    <div class="info-callout"><strong>Coaching focus:</strong> Play off 2 feet where possible. Force defenders to wall up in the cylinder. Teach shoulder dip, swim moves, and seal catches.</div>
+    <div id="cat-grid-finishing" class="drills-grid"></div>
+  </div>
+
+  <div class="section" id="tab-shooting">
+    <div class="section-header">
+      <div class="section-eyebrow">Category · Intro Drill: KD Form Shooting</div>
+      <h2>🔵 Shooting</h2>
+      <p>System shots, catch-and-shoot reps, contest shooting, and off-screen reads. Use <strong>KD Form Shooting</strong> as your intro.</p>
+    </div>
+    <div class="info-callout"><strong>Coaching focus:</strong> System shots only in Grinch — Layup, WS corner 3, SS corner 3, Elbow 2, Wing 3. If open, let it fly. No inside 3s (floor is lava).</div>
+    <div id="cat-grid-shooting" class="drills-grid"></div>
+  </div>
+
+  <div class="section" id="tab-passing">
+    <div class="section-header">
+      <div class="section-eyebrow">Category</div>
+      <h2>🟢 Passing</h2>
+      <p>Decision-making passes, ghost passes, paint-touch triggers, and touch passing under pressure.</p>
+    </div>
+    <div class="info-callout"><strong>Coaching focus:</strong> Zip passes — elbow and wrist lock out as you step towards the target. Touch passes are key. Count out loud.</div>
+    <div id="cat-grid-passing" class="drills-grid"></div>
+  </div>
+
+  <div class="section" id="tab-defence">
+    <div class="section-header">
+      <div class="section-eyebrow">Category</div>
+      <h2>🟣 Defence</h2>
+      <p>No-middle principles, closeout technique, man-to-man footwork, and ICE/WEAK ball screen coverage.</p>
+    </div>
+    <div class="info-callout"><strong>Coaching focus:</strong> Force ball to side thirds. Cover Home and the Nail. Cover 2 guy is never the Home guy. Closeout chest first, arm up — don't leave feet. Low active hand on drives.</div>
+    <div id="cat-grid-defence" class="drills-grid"></div>
+  </div>
+
+  <div class="section" id="tab-ballhandling">
+    <div class="section-header">
+      <div class="section-eyebrow">Category</div>
+      <h2>🟠 Ball Handling</h2>
+      <p>Low dribble touch, shoulder dip mechanics, driving angles, and handling under resistance.</p>
+    </div>
+    <div class="info-callout"><strong>Coaching focus:</strong> Pickup forces shoulder dip — essential for blowing by defenders. Eliminate wasted movement. Never give up 50/50 balls.</div>
+    <div id="cat-grid-ballhandling" class="drills-grid"></div>
+  </div>
+
+  <div class="section" id="tab-team">
+    <div class="section-header">
+      <div class="section-eyebrow">Category · Always intro then 2v1 detailed drills</div>
+      <h2>🟩 Team Concepts</h2>
+      <p>Green Eggs system, Creighton Transition, Spain PnR reads, and no-middle defensive structure. Hawks &amp; Foxes run Option A. Cobras &amp; Bears run Option B.</p>
+    </div>
+    <div class="info-callout"><strong>Session structure:</strong> Always intro, then 2v1 detailed drills. Dev group runs individual workouts before joining others. Progress: 2v1 → 2v2 → 3v2.</div>
+    <div id="cat-grid-team" class="drills-grid"></div>
+  </div>
+
+  <div class="section" id="tab-warmup">
+    <div class="section-header">
+      <div class="section-eyebrow">Category · Fun, engaging, build chemistry</div>
+      <h2>⚪ Warmups</h2>
+      <p>High-energy activities that build touch, chemistry, and team culture before the skills block begins.</p>
+    </div>
+    <div class="info-callout"><strong>Culture notes:</strong> The gym must be loud. High five or spud after every rep. Clap them home. Pick each other up.</div>
+    <div id="cat-grid-warmup" class="drills-grid"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════ SESSION STRUCTURE ══════════════════════════════════════ -->
+  <div class="section" id="tab-session">
+    <div class="section-header">
+      <div class="section-eyebrow">Warwickshire Hawks U17 · V10 Session Blueprint</div>
+      <h2>📋 Session <span style="color:var(--gold)">Structure</span></h2>
+      <p>The standard session template. Follow this order and use the drill library to select and constrain within each block.</p>
+    </div>
+
+    <div class="info-callout">
+      <strong>Global rules:</strong> All drills are make it take it unless stated. Presume 3 dribble max. Wherever possible, make drills competitive against live defence. The gym must be loud. High five or spud after every rep. Back-pedal/plyo if players are not on time or on target.
+    </div>
+
+    <div class="session-phase" id="sp-1">
+      <div class="session-phase-header" onclick="toggleSession('sp-1')">
+        <div class="phase-num">1</div>
+        <div>
+          <div class="session-phase-title">Warmup</div>
+          <div class="session-phase-sub">Fun, engaging — build chemistry and touch</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p>Select from the Warmup category. Prioritise activities that build laughter and chemistry as well as touch. The energy level here sets the tone for the whole session. Involve the whole group, keep it moving.</p>
+        <div class="session-rule"><strong>Tip:</strong> Basket-Football, Pool Noodle Tag, and 5v5 w/ Yoga Ball are high-energy crowd-pleasers to open.</div>
+      </div>
+    </div>
+
+    <div class="session-phase" id="sp-2">
+      <div class="session-phase-header" onclick="toggleSession('sp-2')">
+        <div class="phase-num">2</div>
+        <div>
+          <div class="session-phase-title">Stretching into Plyometrics</div>
+          <div class="session-phase-sub">Stretching is always dynamic — plyometrics build bounce</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p>Dynamic stretching only — no static holds during warmup. Transition into plyometric work: bounds, box jumps, lateral explosive movements. The goal is to prime explosiveness, not reduce it.</p>
+        <div class="session-rule"><strong>Tip:</strong> Piano Warmup integrates well at the end of this block as a ball-touch bridge into the skills block.</div>
+      </div>
+    </div>
+
+    <div class="session-phase" id="sp-3">
+      <div class="session-phase-header" onclick="toggleSession('sp-3')">
+        <div class="phase-num">3</div>
+        <div>
+          <div class="session-phase-title">Skills Drills Block</div>
+          <div class="session-phase-sub">Always intro, then 1–2 detailed drills. Finishing OR Shooting</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p><strong>If Finishing</strong> — use <strong>3 Man Lays</strong> as intro.<br><strong>If Shooting</strong> — use <strong>KD Form Shooting</strong> as intro.</p>
+        <p>Then mix in either Passing, Defence, or Ball Handling as the secondary skill block.</p>
+        <div class="session-rule"><strong>Structure:</strong> Intro drill (10 min) → Skill drill 1 (15 min) → Skill drill 2 (15 min) → Drink break.</div>
+      </div>
+    </div>
+
+    <div class="session-phase" id="sp-4">
+      <div class="session-phase-header" onclick="toggleSession('sp-4')">
+        <div class="phase-num">4</div>
+        <div>
+          <div class="session-phase-title">Drink Break</div>
+          <div class="session-phase-sub">Short break before Team Concepts</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p>Keep it brief. Use this moment to set up the Team Concepts block — brief the defence on their explicit coverage instructions (for Get Action, Creighton etc.) so they can discuss before drills begin.</p>
+      </div>
+    </div>
+
+    <div class="session-phase" id="sp-5">
+      <div class="session-phase-header" onclick="toggleSession('sp-5')">
+        <div class="phase-num">5</div>
+        <div>
+          <div class="session-phase-title">Team Concepts</div>
+          <div class="session-phase-sub">Always intro, then 2v1 detailed drills</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p><strong>Hawks &amp; Foxes</strong> run Option A (Pinch Post).<br><strong>Cobras &amp; Bears</strong> run Option B (Hammer).<br><strong>Dev group</strong> runs individual workouts before joining others.</p>
+        <div class="session-rule"><strong>Progression:</strong> 2v1 → 2v2 → 3v2 as weeks go on.</div>
+      </div>
+    </div>
+
+    <div class="session-phase" id="sp-6">
+      <div class="session-phase-header" onclick="toggleSession('sp-6')">
+        <div class="phase-num">6</div>
+        <div>
+          <div class="session-phase-title">Drink Break</div>
+          <div class="session-phase-sub">Brief break before Games block</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p>Use this moment to set constraints for the Games block. Decide which system concepts to focus on and what scoring constraints will guide play.</p>
+      </div>
+    </div>
+
+    <div class="session-phase" id="sp-7">
+      <div class="session-phase-header" onclick="toggleSession('sp-7')">
+        <div class="phase-num">7</div>
+        <div>
+          <div class="session-phase-title">Games</div>
+          <div class="session-phase-sub">Use team concepts to guide and constrain play</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p>Always start with <strong>2v2 or 3v3</strong> as an intro before moving to 5v5. Use scoring constraints and explicit defensive instructions to reinforce the day's system concepts.</p>
+        <div class="session-rule"><strong>Teams who use ICE/WEAK ball screens, recover, and/or WOLF stay on.</strong></div>
+      </div>
+    </div>
+
+    <div class="session-phase" id="sp-8">
+      <div class="session-phase-header" onclick="toggleSession('sp-8')">
+        <div class="phase-num">8</div>
+        <div>
+          <div class="session-phase-title">Cooldown</div>
+          <div class="session-phase-sub">Bring it together, open the floor</div>
+        </div>
+        <span class="session-chevron">▶</span>
+      </div>
+      <div class="session-phase-body">
+        <p>Bring the group together. Ask for highlights and lessons learned. Open the floor for questions to clarify expectations, roles, and upcoming games. This is the culture moment — make it count.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end main -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2026 <strong style="color:rgba(255,255,255,0.8)">Warwickshire Hawks Basketball</strong> · U17 Drills Library V1 · V10 Coaching Reference.</p>
+</footer>
+
+<script>
+/* ── TAB SWITCHING ── */
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id !== 'all' && id !== 'session') {
+    populateCatGrid(id);
+  }
+}
+
+/* ── DRILL ACCORDION ── */
+function toggleDrill(card) {
+  card.classList.toggle('open');
+}
+
+/* ── SESSION ACCORDION ── */
+function toggleSession(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+/* ── SEARCH & FILTER (All tab) ── */
+let currentFilter = 'all';
+
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  filterDrills();
+}
+
+function filterDrills() {
+  const query = document.getElementById('search-input').value.toLowerCase();
+  const cards = document.querySelectorAll('#drills-grid .drill-card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    const cats = card.dataset.cats;
+    const desc = card.querySelector('.drill-description') ? card.querySelector('.drill-description').textContent.toLowerCase() : '';
+    const matchesFilter = currentFilter === 'all' || cats.includes(currentFilter);
+    const matchesSearch = !query || name.includes(query) || desc.includes(query);
+    if (matchesFilter && matchesSearch) {
+      card.style.display = '';
+      visible++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  document.getElementById('result-count').textContent = `Showing ${visible} drill${visible !== 1 ? 's' : ''}`;
+  document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+}
+
+/* ── CAT FILTER SHORTCUT (from overview cards) ── */
+function activateCatFilter(cat) {
+  const allBtn = document.querySelector('.tab-btn[data-tab="all"]');
+  showTab('all', allBtn);
+  const pill = document.querySelector(`.filter-pill[data-filter="${cat}"]`);
+  setFilter(cat, pill);
+  document.querySelector('.tabs-container').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── POPULATE CATEGORY TAB GRIDS ── */
+function populateCatGrid(cat) {
+  const targetGrid = document.getElementById('cat-grid-' + cat);
+  if (!targetGrid || targetGrid.children.length > 0) return; // already populated
+  const allCards = document.querySelectorAll('#drills-grid .drill-card');
+  allCards.forEach(card => {
+    if (card.dataset.cats.includes(cat)) {
+      const clone = card.cloneNode(true);
+      // rewire click
+      clone.querySelector('.drill-card-header').addEventListener('click', () => toggleDrill(clone));
+      targetGrid.appendChild(clone);
+    }
+  });
+}
+</script>
+</body>
+</html>
